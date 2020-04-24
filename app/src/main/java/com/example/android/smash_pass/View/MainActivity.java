@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.smash_pass.Model.MyObserver;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupViewModel();
     }
+
 
     private void setupViewModel() {
         viewModel = new ViewModel();

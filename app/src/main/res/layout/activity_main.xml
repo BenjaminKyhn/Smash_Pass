@@ -1,8 +1,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#673AB7"
     tools:context=".View.MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#35FFFFFF"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/aniki" />
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -11,20 +20,25 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_margin="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="210dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnOne"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/colorPrimary"
+                android:onClick="changeToFightingGames"
                 android:text="Fighting Games"
                 android:textColor="#fff"
-                android:textSize="20sp"
-                android:onClick="changeToFightingGames"/>
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnTwo"
@@ -33,10 +47,10 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorPrimary"
+                android:onClick="changeToFPSGames"
                 android:text="FPS Games"
                 android:textColor="#fff"
-                android:textSize="20sp"
-                android:onClick="changeToFPSGames"/>
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnThree"
@@ -45,10 +59,10 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorPrimary"
+                android:onClick="changeToMMOGames"
                 android:text="MMORPG Games"
                 android:textColor="#fff"
-                android:textSize="20sp"
-                android:onClick="changeToMMOGames"/>
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnFour"
@@ -57,10 +71,10 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorPrimary"
+                android:onClick="changeToRTSGames"
                 android:text="RTS Games"
                 android:textColor="#fff"
-                android:textSize="20sp"
-                android:onClick="changeToRTSGames"/>
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnFive"
@@ -69,10 +83,10 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorPrimary"
+                android:onClick="changeToDungeonCrawlerGames"
                 android:text="Dungeon Crawler Games"
                 android:textColor="#fff"
-                android:textSize="20sp"
-                android:onClick="changeToDungeonCrawlerGames"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
