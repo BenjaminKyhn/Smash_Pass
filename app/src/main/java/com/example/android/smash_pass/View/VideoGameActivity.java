@@ -47,6 +47,8 @@ public class VideoGameActivity extends AppCompatActivity {
                 titleText.setText(viewModel.getVideoGame().getName());
                 genreText.setText(viewModel.getVideoGame().getGenre());
                 platformText.setText(viewModel.getVideoGame().getPlatform());
+//                yearText.setText(viewModel.getVideoGame().getYear());
+//                numberOfPlayersText.setText(viewModel.getVideoGame().getNumberOfPlayers());
                 onlinePlayText.setText(viewModel.getVideoGame().getOnlinePlay());
 //                titleText.setText((String) o);
 //                genreText.setText((String) o);
