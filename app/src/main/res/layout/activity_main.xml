@@ -26,6 +26,7 @@
                 android:textSize="20sp" />
 
             <Button
+                android:id="@+id/btnTwo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -36,6 +37,7 @@
                 android:textSize="20sp" />
 
             <Button
+                android:id="@+id/btnThree"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -46,6 +48,7 @@
                 android:textSize="20sp" />
 
             <Button
+                android:id="@+id/btnFour"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -56,6 +59,7 @@
                 android:textSize="20sp" />
 
             <Button
+                android:id="@+id/btnFive"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
