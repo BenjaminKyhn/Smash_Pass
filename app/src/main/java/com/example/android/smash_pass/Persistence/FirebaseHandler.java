@@ -16,7 +16,7 @@ public class FirebaseHandler {
     public FirebaseHandler(VideoGame videoGame) {
         this.videoGame = videoGame;
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("text");
+        databaseReference = firebaseDatabase.getReference("Fighting Games").child("Super Smash Bros Ultimate").child("name");
         addEventListener();
     }
 
