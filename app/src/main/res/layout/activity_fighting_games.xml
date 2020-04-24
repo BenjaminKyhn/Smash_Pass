@@ -23,7 +23,8 @@
                 android:background="#000000"
                 android:text="Super Smash Bros. Ultimate"
                 android:textColor="#fff"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:onClick="changeToVideoGame"/>
 
             <Button
                 android:id="@+id/btnBack"

@@ -20,4 +20,9 @@ public class FightingGamesActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, MainActivity.class);
         startActivity(myIntent);
     }
+
+    public void changeToVideoGame(View view){
+        Intent myIntent = new Intent(this, VideoGameActivity.class);
+        startActivity(myIntent);
+    }
 }

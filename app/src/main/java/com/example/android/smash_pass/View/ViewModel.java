@@ -20,4 +20,8 @@ public class ViewModel {
     public void persist(String text) {
         firebaseHandler.insert(text);
     }
+
+    public VideoGame getVideoGame() {
+        return videoGame;
+    }
 }
