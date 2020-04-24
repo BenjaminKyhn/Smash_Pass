@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.android.smash_pass.R;
 
-public class PuzzlePlatformGames extends AppCompatActivity {
+public class DungeonCrawlerGames extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_puzzle_platform_games);
+        setContentView(R.layout.dungeon_crawler_games);
     }
 }

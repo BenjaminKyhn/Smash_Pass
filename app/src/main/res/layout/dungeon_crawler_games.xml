@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MMORPGGamesActivity">
+    tools:context=".View.DungeonCrawlerGames">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#000000"
-                android:text="World of Warcraft: CLassic"
+                android:text="Wizard of Legend"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 

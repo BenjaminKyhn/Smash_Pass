@@ -15,4 +15,9 @@ public class FPSGamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_p_s_games);
     }
+
+    public void back(View view){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        startActivity(myIntent);
+    }
 }
