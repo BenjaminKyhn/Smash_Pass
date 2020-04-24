@@ -24,7 +24,7 @@ public class FirebaseHandler {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                videoGame.setText((String) dataSnapshot.getValue());
+                videoGame.setName((String) dataSnapshot.getValue());
             }
 
             @Override
