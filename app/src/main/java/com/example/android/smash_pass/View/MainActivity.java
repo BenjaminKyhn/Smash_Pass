@@ -27,46 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnOne = findViewById(R.id.btnOne);
-        btnOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeToFightingGames();
-            }
-        });
-
-        btnTwo = findViewById(R.id.btnTwo);
-        btnTwo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeToFPSGames();
-            }
-        });
-
-        btnThree = findViewById(R.id.btnThree);
-        btnThree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeToMMOGames();
-            }
-        });
-
-        btnFour = findViewById(R.id.btnFour);
-        btnFour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeToRTSGames();
-            }
-        });
-
-        btnFive = findViewById(R.id.btnFive);
-        btnFive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeToPuzzlePlatformGames();
-            }
-        });
-
         setupViewModel();
     }
 
@@ -79,27 +39,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void changeToFightingGames(){
+    public void changeToFightingGames(View view){
         Intent myIntent = new Intent(this, FightingGamesActivity.class);
         startActivity(myIntent);
     }
 
-    public void changeToFPSGames(){
+    public void changeToFPSGames(View view){
         Intent myIntent = new Intent(this, FPSGamesActivity.class);
         startActivity(myIntent);
     }
 
-    public void changeToMMOGames(){
+    public void changeToMMOGames(View view){
         Intent myIntent = new Intent(this, FPSGamesActivity.class);
         startActivity(myIntent);
     }
 
-    public void changeToRTSGames(){
+    public void changeToRTSGames(View view){
         Intent myIntent = new Intent(this, FPSGamesActivity.class);
         startActivity(myIntent);
     }
 
-    public void changeToPuzzlePlatformGames(){
+    public void changeToPuzzlePlatformGames(View view){
         Intent myIntent = new Intent(this, FPSGamesActivity.class);
         startActivity(myIntent);
     }

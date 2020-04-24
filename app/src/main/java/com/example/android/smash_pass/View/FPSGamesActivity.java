@@ -2,7 +2,9 @@ package com.example.android.smash_pass.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.android.smash_pass.R;
 
