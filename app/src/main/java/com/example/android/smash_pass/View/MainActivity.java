@@ -50,17 +50,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeToMMOGames(View view){
-        Intent myIntent = new Intent(this, FPSGamesActivity.class);
+        Intent myIntent = new Intent(this, MMORPGGamesActivity.class);
         startActivity(myIntent);
     }
 
     public void changeToRTSGames(View view){
-        Intent myIntent = new Intent(this, FPSGamesActivity.class);
+        Intent myIntent = new Intent(this, RTSGamesActivity.class);
         startActivity(myIntent);
     }
 
-    public void changeToPuzzlePlatformGames(View view){
-        Intent myIntent = new Intent(this, FPSGamesActivity.class);
+    public void changeToDungeonCrawlerGames(View view){
+        Intent myIntent = new Intent(this, DungeonCrawlerGamesActivity.class);
         startActivity(myIntent);
     }
 }

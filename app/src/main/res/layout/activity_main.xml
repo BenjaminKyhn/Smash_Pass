@@ -69,10 +69,10 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="#000000"
-                android:text="Puzzle/Platform Games"
+                android:text="Dungeon Crawler Games"
                 android:textColor="#fff"
                 android:textSize="20sp"
-                android:onClick="changeToPuzzlePlatformGames"/>
+                android:onClick="changeToDungeonCrawlerGames"/>
 
         </LinearLayout>
 
