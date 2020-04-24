@@ -7,6 +7,13 @@ public class VideoGame extends MyObservable{
     private int year;
     private double smashFactor;
 
+    public VideoGame(){
+    }
+
+    public VideoGame(String name){
+        this.name = name;
+    }
+
     public void setText(String text){
         this.text = text;
         notifyObservers(this.text); // Hvorfor passer vi en String som argument, når notifyObservers tager imod et object?
