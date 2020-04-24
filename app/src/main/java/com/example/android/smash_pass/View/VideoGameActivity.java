@@ -13,6 +13,10 @@ import com.squareup.picasso.Picasso;
 public class VideoGameActivity extends AppCompatActivity {
     TextView titleText;
     TextView genreText;
+    TextView platformText;
+    TextView yearText;
+    TextView numberOfPlayersText;
+    TextView onlinePlayText;
     ImageView mainImage;
     ViewModel viewModel;
 
@@ -23,6 +27,10 @@ public class VideoGameActivity extends AppCompatActivity {
 
         titleText = findViewById(R.id.titleText);
         genreText = findViewById(R.id.genreText);
+        platformText = findViewById(R.id.platformText);
+        yearText = findViewById(R.id.yearText);
+        numberOfPlayersText = findViewById(R.id.numberOfPlayersText);
+        onlinePlayText = findViewById(R.id.onlinePlayText);
 
         mainImage = findViewById(R.id.mainImage);
         String pictureUrl = "https://www.pngitem.com/pimgs/m/157-1579710_picture-chuck-norris-hd-png-download.png";
@@ -35,8 +43,13 @@ public class VideoGameActivity extends AppCompatActivity {
         viewModel = new ViewModel();
         viewModel.observeVideoGame(new MyObserver() {
             @Override
-            public void update(Object o) {
-                titleText.setText((String) o);
+            public void update(Object o) { // This is bad. Why does it take an object parameter if I don't use it?
+                titleText.setText(viewModel.getVideoGame().getName());
+                genreText.setText(viewModel.getVideoGame().getGenre());
+                platformText.setText(viewModel.getVideoGame().getPlatform());
+                onlinePlayText.setText(viewModel.getVideoGame().getOnlinePlay());
+//                titleText.setText((String) o);
+//                genreText.setText((String) o);
             }
         });
     }

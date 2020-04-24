@@ -71,6 +71,7 @@
                     android:text="Platform: "/>
 
                 <TextView
+                    android:id="@+id/platformText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
@@ -84,6 +85,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/yearText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
@@ -109,6 +111,7 @@
                     android:text="Number of players: "/>
 
                 <TextView
+                    android:id="@+id/numberOfPlayersText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
@@ -128,6 +131,7 @@
                     android:text="Online play: "/>
 
                 <TextView
+                    android:id="@+id/onlinePlayText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
