@@ -23,7 +23,7 @@
                 android:background="#000000"
                 android:text="Fortnite"
                 android:textColor="#fff"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
 
             <Button
                 android:id="@+id/btnBack"

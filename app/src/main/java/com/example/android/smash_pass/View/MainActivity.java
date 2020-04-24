@@ -68,4 +68,10 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, DungeonCrawlerGamesActivity.class);
         startActivity(myIntent);
     }
+
+    public void changeToVideoGame(View view){
+        //TODO: add code here to inject information about the game from the db into the activity
+        Intent myIntent = new Intent(this, VideoGameActivity.class);
+        startActivity(myIntent);
+    }
 }
