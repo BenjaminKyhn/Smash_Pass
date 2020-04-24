@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 
 public class VideoGameActivity extends AppCompatActivity {
     TextView titleText;
+    TextView genreText;
     ImageView mainImage;
     ViewModel viewModel;
 
@@ -21,6 +22,7 @@ public class VideoGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_game);
 
         titleText = findViewById(R.id.titleText);
+        genreText = findViewById(R.id.genreText);
 
         mainImage = findViewById(R.id.mainImage);
         String pictureUrl = "https://www.pngitem.com/pimgs/m/157-1579710_picture-chuck-norris-hd-png-download.png";

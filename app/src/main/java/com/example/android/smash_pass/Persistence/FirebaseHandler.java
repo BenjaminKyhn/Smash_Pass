@@ -11,17 +11,19 @@ import com.google.firebase.database.ValueEventListener;
 
 public class FirebaseHandler {
     private VideoGame videoGame;
-    private DatabaseReference databaseReference;
+    private DatabaseReference nameReference;
+    private DatabaseReference genreReference;
 
     public FirebaseHandler(VideoGame videoGame) {
         this.videoGame = videoGame;
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Fighting Games").child("Super Smash Bros Ultimate").child("name");
+        nameReference = firebaseDatabase.getReference("Fighting Games").child("Super Smash Bros Ultimate").child("name");
+        genreReference = firebaseDatabase.getReference("Fighting Games").child("Super Smash Bros Ultimate").child("genre");
         addEventListener();
     }
 
     private void addEventListener() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        nameReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 videoGame.setName((String) dataSnapshot.getValue());
@@ -31,9 +33,20 @@ public class FirebaseHandler {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+        genreReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                videoGame.setGenre((String) dataSnapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     public void insert(String text){
-        databaseReference.setValue(text);
+        nameReference.setValue(text);
     }
 }
