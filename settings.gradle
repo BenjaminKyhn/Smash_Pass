@@ -1,0 +1,2 @@
+rootProject.name='Smash_Pass'
+include ':app'
