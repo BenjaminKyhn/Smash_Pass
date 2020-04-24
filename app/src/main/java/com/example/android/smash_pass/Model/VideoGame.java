@@ -2,6 +2,10 @@ package com.example.android.smash_pass.Model;
 
 public class VideoGame extends MyObservable{
     private String text;
+    private String genre;
+    private String name;
+    private int year;
+    private double smashFactor;
 
     public void setText(String text){
         this.text = text;
