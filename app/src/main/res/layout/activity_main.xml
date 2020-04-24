@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="#35FFFFFF"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/aniki" />
+        android:src="@drawable/aniki"/>
 
     <ScrollView
         android:layout_width="fill_parent"
