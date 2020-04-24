@@ -33,8 +33,8 @@ public class VideoGameActivity extends AppCompatActivity {
         viewModel = new ViewModel();
         viewModel.observeVideoGame(new MyObserver() {
             @Override
-            public void update(Object arg) {
-                titleText.setText((String) arg);
+            public void update(Object o) {
+                titleText.setText((String) o);
             }
         });
     }
