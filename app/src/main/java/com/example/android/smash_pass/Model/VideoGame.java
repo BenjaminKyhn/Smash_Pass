@@ -4,8 +4,8 @@ public class VideoGame extends MyObservable{
     private String name;
     private String genre;
     private String platform;
-    private int year;
-    private int numberOfPlayers;
+    private long year;
+    private long numberOfPlayers;
     private boolean onlinePlay;
     private double smashFactor;
 
@@ -43,20 +43,20 @@ public class VideoGame extends MyObservable{
         notifyObservers(this.platform);
     }
 
-    public int getYear() {
+    public long getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(long year) {
         this.year = year;
         notifyObservers(this.year);
     }
 
-    public int getNumberOfPlayers() {
+    public long getNumberOfPlayers() {
         return numberOfPlayers;
     }
 
-    public void setNumberOfPlayers(int numberOfPlayers) {
+    public void setNumberOfPlayers(long numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
         notifyObservers(this.numberOfPlayers);
     }
