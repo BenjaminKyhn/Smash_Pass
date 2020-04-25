@@ -85,13 +85,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/yearText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:text="Year: "/>
 
                 <TextView
+                    android:id="@+id/yearText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
