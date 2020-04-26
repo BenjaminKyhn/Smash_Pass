@@ -12,12 +12,17 @@ import android.widget.LinearLayout;
 import com.example.android.smash_pass.R;
 
 public class FightingGamesActivity extends AppCompatActivity {
+    ViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fighting_games);
 
+        // Instantiate a view model so we can get the map of video games
+        viewModel = new ViewModel();
+
+        // Create a list of buttons and add them to the activity
         createButtons();
     }
 
