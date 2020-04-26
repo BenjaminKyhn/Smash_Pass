@@ -6,13 +6,6 @@
     android:background="#673AB7"
     tools:context=".View.MainActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#35FFFFFF"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/aniki"/>
-
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
