@@ -2,7 +2,9 @@ package com.example.android.smash_pass.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,15 +14,15 @@ import com.example.android.smash_pass.R;
 import com.squareup.picasso.Picasso;
 
 public class VideoGameActivity extends AppCompatActivity {
-    TextView titleText;
-    TextView genreText;
-    TextView platformText;
-    TextView yearText;
-    TextView numberOfPlayersText;
-    TextView onlinePlayText;
-    ImageView mainImage;
-    ViewModel viewModel;
-    VideoGame videoGame;
+    private TextView titleText;
+    private TextView genreText;
+    private TextView platformText;
+    private TextView yearText;
+    private TextView numberOfPlayersText;
+    private TextView onlinePlayText;
+    private ImageView mainImage;
+    private ViewModel viewModel;
+    public static VideoGame videoGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +40,12 @@ public class VideoGameActivity extends AppCompatActivity {
         String pictureUrl = "https://www.pngitem.com/pimgs/m/157-1579710_picture-chuck-norris-hd-png-download.png";
         Picasso.get().load(pictureUrl).into(mainImage);
 
-        setupViewModel();
+        populateViews();
     }
 
-    private void setupViewModel() {
-        viewModel = new ViewModel("Super Smash Bros Ultimate");
-        videoGame = viewModel.getVideoGame();
+    private void populateViews() {
+//        viewModel = new ViewModel("Super Smash Bros Ultimate");
+//        videoGame = viewModel.getVideoGame();
         titleText.setText(videoGame.getName());
         genreText.setText(videoGame.getGenre());
         platformText.setText(videoGame.getPlatform());
@@ -63,5 +65,10 @@ public class VideoGameActivity extends AppCompatActivity {
 //                genreText.setText((String) o);
 //            }
 //        });
+    }
+
+    public void home(View view){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        startActivity(myIntent);
     }
 }
