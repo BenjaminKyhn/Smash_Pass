@@ -112,17 +112,6 @@ public class FirebaseHandler {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-        onlinePlayReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                videoGame.setOnlinePlay((boolean) dataSnapshot.getValue());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
     }
 
     public void insert(String text) {
@@ -138,8 +127,8 @@ public class FirebaseHandler {
 
     public void saveStuff() {
         Map<String, VideoGame> videoGameMap = new HashMap<>();
-        videoGameMap.put("Super Smash Bros Ultimate", new VideoGame("Super Smash Bros Ultimate", "Fighting Games", "Nintendo Switch", 2018, 8, true));
-        videoGameMap.put("Tekken Tag Tournament 2", new VideoGame("Tekken Tag Tournament 2", "Fighting Games", "PlayStation 3", 2011, 2, true));
+        videoGameMap.put("Super Smash Bros Ultimate", new VideoGame("Super Smash Bros Ultimate", "Fighting Games", "Nintendo Switch", 2018, 8));
+        videoGameMap.put("Tekken Tag Tournament 2", new VideoGame("Tekken Tag Tournament 2", "Fighting Games", "PlayStation 3", 2011, 2));
         fightingGamesReference.setValue(videoGameMap);
     }
 
