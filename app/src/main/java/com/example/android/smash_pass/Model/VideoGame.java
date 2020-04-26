@@ -12,7 +12,7 @@ public class VideoGame extends MyObservable {
     public VideoGame() {
     }
 
-    public VideoGame(String name, String genre, String platform, long year, long numberOfPlayers) {
+    public VideoGame(String name, String genre, String platform, long year, long numberOfPlayers, boolean onlinePlay) {
         this.name = name;
         this.genre = genre;
         this.platform = platform;
