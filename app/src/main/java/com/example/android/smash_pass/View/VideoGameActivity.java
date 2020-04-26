@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.smash_pass.Model.MyObserver;
+import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
 import com.squareup.picasso.Picasso;
 
@@ -19,6 +20,7 @@ public class VideoGameActivity extends AppCompatActivity {
     TextView onlinePlayText;
     ImageView mainImage;
     ViewModel viewModel;
+    VideoGame videoGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +43,26 @@ public class VideoGameActivity extends AppCompatActivity {
 
     private void setupViewModel() {
         viewModel = new ViewModel();
-        viewModel.observeVideoGame(new MyObserver() {
-            @Override
-            public void update(Object o) { // This is bad. Why does it take an object parameter if I don't use it?
-                titleText.setText(viewModel.getVideoGame().getName());
-                genreText.setText(viewModel.getVideoGame().getGenre());
-                platformText.setText(viewModel.getVideoGame().getPlatform());
-                yearText.setText(String.valueOf(viewModel.getVideoGame().getYear()));
-                numberOfPlayersText.setText(String.valueOf(viewModel.getVideoGame().getNumberOfPlayers()));
-                onlinePlayText.setText(String.valueOf(viewModel.getVideoGame().getOnlinePlay()));
+        videoGame = viewModel.getFightingGamesMap().get("Super Smash Bros Ultimate");
+        titleText.setText(videoGame.getName());
+        genreText.setText(videoGame.getGenre());
+        platformText.setText(videoGame.getPlatform());
+        yearText.setText(String.valueOf(videoGame.getYear()));
+        numberOfPlayersText.setText(String.valueOf(videoGame.getNumberOfPlayers()));
+        onlinePlayText.setText(String.valueOf(videoGame.getOnlinePlay()));
+
+//        viewModel.observeVideoGame(new MyObserver() {
+//            @Override
+//            public void update(Object o) { // This is bad. Why does it take an object parameter if I don't use it?
+//                titleText.setText(videoGame.getName());
+//                genreText.setText(viewModel.getVideoGame().getGenre());
+//                platformText.setText(viewModel.getVideoGame().getPlatform());
+//                yearText.setText(String.valueOf(viewModel.getVideoGame().getYear()));
+//                numberOfPlayersText.setText(String.valueOf(viewModel.getVideoGame().getNumberOfPlayers()));
+//                onlinePlayText.setText(String.valueOf(viewModel.getVideoGame().getOnlinePlay()));
 //                titleText.setText((String) o);
 //                genreText.setText((String) o);
-            }
-        });
+//            }
+//        });
     }
 }
