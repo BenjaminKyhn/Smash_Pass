@@ -13,11 +13,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirebaseHandler {
-    private VideoGame videoGame;
     private DatabaseReference fightingGamesReference;
     private Map<String, VideoGame> fightingGamesMap = new HashMap<>();
 
-    public FirebaseHandler(VideoGame videoGame) {
+    public FirebaseHandler() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         fightingGamesReference = firebaseDatabase.getReference("Fighting Games");
         saveToDatabase();

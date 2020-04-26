@@ -42,8 +42,8 @@ public class VideoGameActivity extends AppCompatActivity {
     }
 
     private void setupViewModel() {
-        viewModel = new ViewModel();
-        videoGame = viewModel.getFightingGamesMap().get("Super Smash Bros Ultimate");
+        viewModel = new ViewModel("Super Smash Bros Ultimate");
+        videoGame = viewModel.getVideoGame();
         titleText.setText(videoGame.getName());
         genreText.setText(videoGame.getGenre());
         platformText.setText(videoGame.getPlatform());
@@ -60,7 +60,6 @@ public class VideoGameActivity extends AppCompatActivity {
 //                yearText.setText(String.valueOf(viewModel.getVideoGame().getYear()));
 //                numberOfPlayersText.setText(String.valueOf(viewModel.getVideoGame().getNumberOfPlayers()));
 //                onlinePlayText.setText(String.valueOf(viewModel.getVideoGame().getOnlinePlay()));
-//                titleText.setText((String) o);
 //                genreText.setText((String) o);
 //            }
 //        });

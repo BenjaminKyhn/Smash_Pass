@@ -11,10 +11,10 @@ public class ViewModel {
     private VideoGame videoGame;
     private FirebaseHandler firebaseHandler;
 
-    public ViewModel() {
-        videoGame = new VideoGame();
-        firebaseHandler = new FirebaseHandler(videoGame);
+    public ViewModel(String key) {
+        firebaseHandler = new FirebaseHandler();
         fightingGamesMap = firebaseHandler.getFightingGamesMap();
+        videoGame = fightingGamesMap.get(key);
     }
 
     public void observeVideoGame(MyObserver myObserver) {
