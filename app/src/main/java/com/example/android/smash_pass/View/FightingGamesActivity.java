@@ -64,10 +64,11 @@ public class FightingGamesActivity extends AppCompatActivity {
             String gameTitle = videoGame.getName();
             myButton.setText(gameTitle);
 
-            // Give the button an on-click method
+            // Give the button an on-click method to switch intent
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    changeToVideoGame(v);
                 }
             });
 
