@@ -22,18 +22,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        setupViewModel();
-    }
-
-
-    private void setupViewModel() {
-        viewModel = new ViewModel();
-        viewModel.observeVideoGame(new MyObserver() {
-            @Override
-            public void update(Object o) {
-            }
-        });
     }
 
     public void changeToFightingGames(View view){

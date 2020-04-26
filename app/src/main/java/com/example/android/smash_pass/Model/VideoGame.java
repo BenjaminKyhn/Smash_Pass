@@ -1,6 +1,6 @@
 package com.example.android.smash_pass.Model;
 
-public class VideoGame extends MyObservable{
+public class VideoGame extends MyObservable {
     private String name;
     private String genre;
     private String platform;
@@ -9,18 +9,23 @@ public class VideoGame extends MyObservable{
     private boolean onlinePlay;
     private double smashFactor;
 
-    public VideoGame(){
+    public VideoGame() {
     }
 
-    public VideoGame(String name){
+    public VideoGame(String name, String genre, String platform, long year, long numberOfPlayers, boolean onlinePlay) {
         this.name = name;
+        this.genre = genre;
+        this.platform = platform;
+        this.year = year;
+        this.numberOfPlayers = numberOfPlayers;
+        this.onlinePlay = onlinePlay;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
         notifyObservers(this.name); // Hvorfor passer vi en String som argument, når notifyObservers tager imod et object?
     }
@@ -61,11 +66,8 @@ public class VideoGame extends MyObservable{
         notifyObservers(this.numberOfPlayers);
     }
 
-    public String getOnlinePlay() {
-        if (onlinePlay)
-            return "Yes";
-        else
-            return "No";
+    public boolean getOnlinePlay() {
+        return onlinePlay;
     }
 
     public void setOnlinePlay(boolean onlinePlay) {
