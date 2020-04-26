@@ -75,5 +75,25 @@ public class FightingGamesActivity extends AppCompatActivity {
             // Add the button to the activity as a ButtonView
             linearLayout.addView(myButton);
         }
+
+        Button backButton = new Button(this);
+
+        // Set the appearance of the button
+        backButton.setLayoutParams(params);
+        backButton.setTextSize(20);
+        backButton.setTextColor(Color.WHITE);
+        backButton.setBackgroundColor(Color.parseColor("#6200EE"));
+        backButton.setText("Back");
+
+        // Give the button an on-click method to switch intent
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                back(v);
+            }
+        });
+
+        // Add the button to the activity as a ButtonView
+        linearLayout.addView(backButton);
     }
 }
