@@ -21,6 +21,7 @@ public class FirebaseHandler {
     private DatabaseReference numberOfPlayersReference;
     private DatabaseReference onlinePlayReference;
     private DatabaseReference fightingGamesReference;
+    private Map<String, VideoGame> fightingGamesMap = new HashMap<>();
 
     public FirebaseHandler(VideoGame videoGame) {
         this.videoGame = videoGame;
@@ -32,25 +33,23 @@ public class FirebaseHandler {
         numberOfPlayersReference = firebaseDatabase.getReference("Fighting Games").child("Super Smash Bros Ultimate").child("numberOfPlayers");
         onlinePlayReference = firebaseDatabase.getReference("Fighting Games").child("Super Smash Bros Ultimate").child("onlinePlay");
         fightingGamesReference = firebaseDatabase.getReference("Fighting Games");
-        addEventListener();
+        saveToDatabase();
+        getDatabase();
     }
 
-    private void addEventListener() {
-        saveStuff();
-
+    private void getDatabase() {
         fightingGamesReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Map<String, VideoGame> videoGameMap = new HashMap<>();
 
                 for (DataSnapshot dataSnapshotChild : dataSnapshot.getChildren()) {
                     VideoGame videoGame = dataSnapshotChild.getValue(VideoGame.class);
 
-                    videoGameMap.put(dataSnapshotChild.getKey(), videoGame);
+                    fightingGamesMap.put(dataSnapshotChild.getKey(), videoGame);
                 }
 
 
-                printStuff(videoGameMap);
+                printStuff(fightingGamesMap);
             }
 
             @Override
@@ -125,6 +124,14 @@ public class FirebaseHandler {
         });
     }
 
+    // With the current database structure, we're commited to adding all games of a certain genre whenever we want to add one game. Because if we just add one game the others will be removed.
+    public void saveToDatabase() {
+        fightingGamesMap.put("Super Smash Bros Ultimate", new VideoGame("Super Smash Bros Ultimate", "Fighting Games", "Nintendo Switch", 2018, 8, true));
+        fightingGamesMap.put("Tekken Tag Tournament 2", new VideoGame("Tekken Tag Tournament 2", "Fighting Games", "PlayStation 3", 2011, 2, true));
+        fightingGamesMap.put("Brawlhalla", new VideoGame("Brawlhalla", "Fighting Games", "PC", 2014, 4, true));
+        fightingGamesReference.setValue(fightingGamesMap);
+    }
+
     public void insert(String text) {
         nameReference.setValue(text);
     }
@@ -135,12 +142,4 @@ public class FirebaseHandler {
             System.out.println("Name: " + videoGame.getName());
         }
     }
-
-    public void saveStuff() {
-        Map<String, VideoGame> videoGameMap = new HashMap<>();
-        videoGameMap.put("Super Smash Bros Ultimate", new VideoGame("Super Smash Bros Ultimate", "Fighting Games", "Nintendo Switch", 2018, 8, true));
-        videoGameMap.put("Tekken Tag Tournament 2", new VideoGame("Tekken Tag Tournament 2", "Fighting Games", "PlayStation 3", 2011, 2, true));
-        fightingGamesReference.setValue(videoGameMap);
-    }
-
 }
