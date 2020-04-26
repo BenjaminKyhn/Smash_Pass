@@ -2,7 +2,9 @@ package com.example.android.smash_pass.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -63,5 +65,10 @@ public class VideoGameActivity extends AppCompatActivity {
 //                genreText.setText((String) o);
 //            }
 //        });
+    }
+
+    public void home(View view){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        startActivity(myIntent);
     }
 }
