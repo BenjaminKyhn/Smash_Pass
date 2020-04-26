@@ -66,11 +66,8 @@ public class VideoGame extends MyObservable {
         notifyObservers(this.numberOfPlayers);
     }
 
-    public String getOnlinePlay() {
-        if (onlinePlay)
-            return "Yes";
-        else
-            return "No";
+    public boolean getOnlinePlay() {
+        return onlinePlay;
     }
 
     public void setOnlinePlay(boolean onlinePlay) {
