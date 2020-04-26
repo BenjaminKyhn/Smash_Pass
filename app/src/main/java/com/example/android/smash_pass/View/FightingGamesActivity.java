@@ -48,6 +48,12 @@ public class FightingGamesActivity extends AppCompatActivity {
 
         myButton.setText("Test");
 
+        myButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         linearLayout.addView(myButton);
     }
 }

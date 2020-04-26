@@ -38,10 +38,10 @@ public class VideoGameActivity extends AppCompatActivity {
         String pictureUrl = "https://www.pngitem.com/pimgs/m/157-1579710_picture-chuck-norris-hd-png-download.png";
         Picasso.get().load(pictureUrl).into(mainImage);
 
-        setupViewModel();
+        populateViews();
     }
 
-    private void setupViewModel() {
+    private void populateViews() {
         viewModel = new ViewModel("Super Smash Bros Ultimate");
         videoGame = viewModel.getVideoGame();
         titleText.setText(videoGame.getName());
