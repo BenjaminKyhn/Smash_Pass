@@ -36,9 +36,10 @@ public class FightingGamesActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
 
-    public void changeToVideoGame(View view) {
+    public void changeToVideoGame(View view, VideoGame videoGame) {
         Intent myIntent = new Intent(this, VideoGameActivity.class);
         startActivity(myIntent);
+        VideoGameActivity.videoGame =videoGame;
     }
 
     public void createButtons() {
@@ -51,7 +52,7 @@ public class FightingGamesActivity extends AppCompatActivity {
 
         for (String key : fightingGamesMap.keySet()) {
             // Create the video game object
-            VideoGame videoGame = fightingGamesMap.get(key);
+            final VideoGame videoGame = fightingGamesMap.get(key);
 
             // Create a button
             Button myButton = new Button(this);
@@ -68,7 +69,7 @@ public class FightingGamesActivity extends AppCompatActivity {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    changeToVideoGame(v);
+                    changeToVideoGame(v, videoGame);
                 }
             });
 

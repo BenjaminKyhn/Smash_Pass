@@ -14,15 +14,15 @@ import com.example.android.smash_pass.R;
 import com.squareup.picasso.Picasso;
 
 public class VideoGameActivity extends AppCompatActivity {
-    TextView titleText;
-    TextView genreText;
-    TextView platformText;
-    TextView yearText;
-    TextView numberOfPlayersText;
-    TextView onlinePlayText;
-    ImageView mainImage;
-    ViewModel viewModel;
-    VideoGame videoGame;
+    private TextView titleText;
+    private TextView genreText;
+    private TextView platformText;
+    private TextView yearText;
+    private TextView numberOfPlayersText;
+    private TextView onlinePlayText;
+    private ImageView mainImage;
+    private ViewModel viewModel;
+    public static VideoGame videoGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,8 @@ public class VideoGameActivity extends AppCompatActivity {
     }
 
     private void populateViews() {
-        viewModel = new ViewModel("Super Smash Bros Ultimate");
-        videoGame = viewModel.getVideoGame();
+//        viewModel = new ViewModel("Super Smash Bros Ultimate");
+//        videoGame = viewModel.getVideoGame();
         titleText.setText(videoGame.getName());
         genreText.setText(videoGame.getGenre());
         platformText.setText(videoGame.getPlatform());
