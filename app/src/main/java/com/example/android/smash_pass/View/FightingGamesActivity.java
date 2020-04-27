@@ -39,7 +39,7 @@ public class FightingGamesActivity extends AppCompatActivity {
     public void changeToVideoGame(View view, VideoGame videoGame) {
         Intent myIntent = new Intent(this, VideoGameActivity.class);
         startActivity(myIntent);
-        VideoGameActivity.videoGame =videoGame;
+        VideoGameActivity.videoGame = videoGame;
     }
 
     public void createButtons() {

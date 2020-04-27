@@ -7,6 +7,7 @@ import com.example.android.smash_pass.Persistence.FirebaseHandler;
 import java.util.Map;
 
 public class ViewModel {
+    private Map<String, VideoGame> fpsGamesMap;
     private Map<String, VideoGame> fightingGamesMap;
     private VideoGame videoGame;
     private FirebaseHandler firebaseHandler;
@@ -14,11 +15,13 @@ public class ViewModel {
     public ViewModel() {
         firebaseHandler = new FirebaseHandler();
         fightingGamesMap = firebaseHandler.getFightingGamesMap();
+        fpsGamesMap = firebaseHandler.getFpsGamesMap();
     }
 
     public ViewModel(String key) {
         firebaseHandler = new FirebaseHandler();
         fightingGamesMap = firebaseHandler.getFightingGamesMap();
+        fpsGamesMap = firebaseHandler.getFpsGamesMap();
         videoGame = fightingGamesMap.get(key);
     }
 
@@ -33,4 +36,6 @@ public class ViewModel {
     public Map<String, VideoGame> getFightingGamesMap() {
         return fightingGamesMap;
     }
+
+    public Map<String, VideoGame> getfpsGamesMap() {return fpsGamesMap;}
 }
