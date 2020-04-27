@@ -1,5 +1,7 @@
 package com.example.android.smash_pass.Model;
 
+import java.util.ArrayList;
+
 public class VideoGame extends MyObservable {
     private String name;
     private String genre;
@@ -8,10 +10,12 @@ public class VideoGame extends MyObservable {
     private long numberOfPlayers;
     private boolean onlinePlay;
     private double smashFactor;
+    private ArrayList<String> screenshots;
 
     public VideoGame() {
     }
 
+    // Constructor without screenshots
     public VideoGame(String name, String genre, String platform, long year, long numberOfPlayers, boolean onlinePlay) {
         this.name = name;
         this.genre = genre;
@@ -19,6 +23,17 @@ public class VideoGame extends MyObservable {
         this.year = year;
         this.numberOfPlayers = numberOfPlayers;
         this.onlinePlay = onlinePlay;
+    }
+
+    // Constructor with screenshots
+    public VideoGame(String name, String genre, String platform, long year, long numberOfPlayers, boolean onlinePlay, ArrayList<String> screenshots) {
+        this.name = name;
+        this.genre = genre;
+        this.platform = platform;
+        this.year = year;
+        this.numberOfPlayers = numberOfPlayers;
+        this.onlinePlay = onlinePlay;
+        this.screenshots = screenshots;
     }
 
     public String getName() {
