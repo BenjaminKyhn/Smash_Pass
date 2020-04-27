@@ -24,7 +24,7 @@ public class DungeonCrawlerGamesActivity extends AppCompatActivity {
         setContentView(R.layout.dungeon_crawler_games);
 
         viewModel = new ViewModel();
-        dungeonCrawlerGamesMap = viewModel.getdungeonCrawlerGamesMap();
+        dungeonCrawlerGamesMap = viewModel.getDungeonCrawlerGamesMap();
 
         createButtons();
     }
