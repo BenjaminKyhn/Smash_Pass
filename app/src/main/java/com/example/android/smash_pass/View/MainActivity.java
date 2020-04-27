@@ -5,18 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
-import com.example.android.smash_pass.Model.MyObserver;
 import com.example.android.smash_pass.R;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnOne;
-    private Button btnTwo;
-    private Button btnThree;
-    private Button btnFour;
-    private Button btnFive;
-    private ViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeToTurnBasedStrategyGames(View view){
         Intent myIntent = new Intent(this, TurnBasedStrategyGamesActivity.class);
-        startActivity(myIntent);
-    }
-
-    public void changeToVideoGame(View view){
-        //TODO: add code here to inject information about the game from the db into the activity
-        Intent myIntent = new Intent(this, VideoGameActivity.class);
         startActivity(myIntent);
     }
 }
