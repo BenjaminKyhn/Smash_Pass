@@ -101,6 +101,7 @@ public class FirebaseHandler {
     // With the current database structure, we're commited to adding all games of a certain genre whenever we want to add one game. Because if we just add one game the others will be removed.
     public void saveToDatabase() {
         fightingGamesMap.put("Super Smash Bros Ultimate", new VideoGame("Super Smash Bros Ultimate", "Fighting Games", "Nintendo Switch", 2018, 8, true));
+        fightingGamesMap.put("Super Smash Bros 4", new VideoGame("Super Smash Bros 4", "Fighting Games", "Nintendo Wii U", 2014, 8, true));
         fightingGamesMap.put("Tekken Tag Tournament 2", new VideoGame("Tekken Tag Tournament 2", "Fighting Games", "PlayStation 3", 2011, 2, true));
         fightingGamesMap.put("Brawlhalla", new VideoGame("Brawlhalla", "Fighting Games", "PC", 2014, 4, true));
         fightingGamesReference.setValue(fightingGamesMap);
