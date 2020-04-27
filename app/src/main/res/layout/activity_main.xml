@@ -23,10 +23,23 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btnFive"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary"
+                android:onClick="changeToDungeonCrawlerGames"
+                android:text="Dungeon Crawler Games"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <Button
                 android:id="@+id/btnOne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:background="@color/colorPrimary"
                 android:onClick="changeToFightingGames"
                 android:text="Fighting Games"
@@ -66,18 +79,6 @@
                 android:background="@color/colorPrimary"
                 android:onClick="changeToRTSGames"
                 android:text="RTS Games"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btnFive"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
-                android:onClick="changeToDungeonCrawlerGames"
-                android:text="Dungeon Crawler Games"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
