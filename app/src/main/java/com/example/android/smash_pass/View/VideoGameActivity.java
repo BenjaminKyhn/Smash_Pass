@@ -41,10 +41,10 @@ public class VideoGameActivity extends AppCompatActivity {
     }
 
     private void populateViews() {
-//        String pictureUrl = "https://www.pngitem.com/pimgs/m/157-1579710_picture-chuck-norris-hd-png-download.png";
-        String pictureUrl = videoGame.getScreenshots().get(0);
-        Picasso.get().load(pictureUrl).into(mainImage);
-        System.out.println(pictureUrl);
+        if (videoGame.getScreenshots() != null){
+            String pictureUrl = videoGame.getScreenshots().get(0);
+            Picasso.get().load(pictureUrl).into(mainImage);
+        }
 //        viewModel = new ViewModel("Super Smash Bros Ultimate");
 //        videoGame = viewModel.getVideoGame();
         titleText.setText(videoGame.getName());
