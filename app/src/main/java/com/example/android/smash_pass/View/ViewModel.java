@@ -17,7 +17,7 @@ public class ViewModel {
 
     public ViewModel() {
         firebaseHandler = new FirebaseHandler();
-        dungeonCrawlerGamesMap = firebaseHandler.getdungeonCrawlerGamesMap();
+        dungeonCrawlerGamesMap = firebaseHandler.getDungeonCrawlerGamesMap();
         fightingGamesMap = firebaseHandler.getFightingGamesMap();
         fpsGamesMap = firebaseHandler.getFpsGamesMap();
         rtsGamesMap = firebaseHandler.getRtsGamesMap();
