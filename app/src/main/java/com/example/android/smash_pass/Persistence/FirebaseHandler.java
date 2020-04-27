@@ -38,7 +38,7 @@ public class FirebaseHandler {
         rtsGamesReference = firebaseDatabase.getReference("RTS Games");
         turnBasedStrategyGamesReference = firebaseDatabase.getReference("Turn-based Strategy Games");
         mmorpgGamesReference = firebaseDatabase.getReference("MMORPG Games");
-//        saveToDatabase();
+        saveToDatabase();
         getDatabase();
     }
 
@@ -160,7 +160,9 @@ public class FirebaseHandler {
         rtsGamesMap.put("Age of Empires II: Definitive Edition", new VideoGame("Age of Empires II: Definitive Edition", "RTS Games", "PC", 2019, 4, true));
         rtsGamesMap.put("Mount & Blade II: Bannerlord", new VideoGame("Mount & Blade II: Bannerlord", "RTS Games", "PC", 2020, 0, true));
         rtsGamesReference.setValue(rtsGamesMap);
-        turnBasedStrategyGamesMap.put("Civilization V", new VideoGame("Civilization V", "Turn-based Strategy Games", "PC", 2010, 12, true));
+        ArrayList<String> screens08 = new ArrayList<>();
+        screens08.add("https://i.imgur.com/IJm7P9O.jpg");
+        turnBasedStrategyGamesMap.put("Civilization V", new VideoGame("Civilization V", "Turn-based Strategy Games", "PC", 2010, 12, true, screens08));
         turnBasedStrategyGamesReference.setValue(turnBasedStrategyGamesMap);
         mmorpgGamesMap.put("World of Warcraft: Classic", new VideoGame("World of Warcraft: Classic", "MMORPG Games", "PC", 2019, 125000, true));
         mmorpgGamesMap.put("World of Warcraft: Battle for Azeroth", new VideoGame("World of Warcraft: Battle for Azeroth", "MMORPG Games", "PC", 2018, 125000, true));

@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewModel = ViewModel.getInstance();
-
         setupViewModel();
     }
 
     private void setupViewModel() {
+        viewModel = ViewModel.getInstance();
+
         viewModel.observeVideoGame(new MyObserver() {
             @Override
             public void update(Object o) {

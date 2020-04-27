@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -18,137 +18,138 @@
             android:layout_height="fill_parent"
             android:scrollbars="vertical">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/titleText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="50dp"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:text="Title"/>
-
-            <ImageView
-                android:id="@+id/mainImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Genre: "/>
-
-                <TextView
-                    android:id="@+id/genreText"
+                    android:id="@+id/titleText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textSize="20dp"
-                    android:text="Sample text"/>
-            </LinearLayout>
+                    android:gravity="center_horizontal"
+                    android:text="Title"
+                    android:textAlignment="center"
+                    android:textSize="50dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
+                <ImageView
+                    android:id="@+id/mainImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Platform: "/>
+                    android:scaleType="centerCrop" />
 
-                <TextView
-                    android:id="@+id/platformText"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textSize="20dp"
-                    android:text="Sample text"/>
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Genre: "
+                        android:textSize="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Year: "/>
+                    <TextView
+                        android:id="@+id/genreText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Sample text"
+                        android:textSize="20dp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/yearText"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textSize="20dp"
-                    android:text="Sample text"/>
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Platform: "
+                        android:textSize="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Number of players: "/>
+                    <TextView
+                        android:id="@+id/platformText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Sample text"
+                        android:textSize="20dp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/numberOfPlayersText"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textSize="20dp"
-                    android:text="Sample text"/>
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Year: "
+                        android:textSize="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Online play: "/>
+                    <TextView
+                        android:id="@+id/yearText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Sample text"
+                        android:textSize="20dp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/onlinePlayText"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textSize="20dp"
-                    android:text="Sample text"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Number of players: "
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/numberOfPlayersText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Sample text"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Online play: "
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/onlinePlayText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Sample text"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimary"
+                    android:onClick="home"
+                    android:text="Home"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
             </LinearLayout>
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
-                android:text="Home"
-                android:textColor="#fff"
-                android:textSize="20sp"
-                android:onClick="home"/>
-
-        </LinearLayout>
 
         </ScrollView>
 
