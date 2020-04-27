@@ -13,13 +13,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirebaseHandler {
+    private DatabaseReference dungeonCrawlerGamesReference;
     private DatabaseReference fightingGamesReference;
     private DatabaseReference fpsGamesReference;
+    private Map<String, VideoGame> dungeonCrawlerGamesMap = new HashMap<>();
     private Map<String, VideoGame> fightingGamesMap = new HashMap<>();
     private Map<String, VideoGame> fpsGamesMap = new HashMap<>();
 
     public FirebaseHandler() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        dungeonCrawlerGamesReference = firebaseDatabase.getReference("Dungeon Crawler Games");
         fpsGamesReference = firebaseDatabase.getReference("FPS Games");
         fightingGamesReference = firebaseDatabase.getReference("Fighting Games");
         saveToDatabase();
@@ -58,10 +61,28 @@ public class FirebaseHandler {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+        dungeonCrawlerGamesReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dataSnapshotChild : dataSnapshot.getChildren()) {
+                    VideoGame videoGame = dataSnapshotChild.getValue(VideoGame.class);
+
+                    dungeonCrawlerGamesMap.put(dataSnapshotChild.getKey(), videoGame);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     // With the current database structure, we're commited to adding all games of a certain genre whenever we want to add one game. Because if we just add one game the others will be removed.
     public void saveToDatabase() {
+        dungeonCrawlerGamesMap.put("Wizard of Legend", new VideoGame("Wizard of Legend", "Dungeon Crawler Games", "PC", 2018, 2, true));
+        dungeonCrawlerGamesReference.setValue(dungeonCrawlerGamesMap);
         fpsGamesMap.put("Fortnite", new VideoGame("Fortnite", "FPS Games", "PC", 2017, 100, true));
         fpsGamesMap.put("Call of Duty: Modern Warfare 2", new VideoGame("Call of Duty: Modern Warfare 2", "FPS Games", "PC", 2009, 12, true));
         fpsGamesReference.setValue(fpsGamesMap);
@@ -78,8 +99,7 @@ public class FirebaseHandler {
         }
     }
 
-    public Map<String, VideoGame> getFightingGamesMap() {
-        return fightingGamesMap;
-    }
+    public Map<String, VideoGame> getFightingGamesMap() {return fightingGamesMap;}
     public Map<String, VideoGame> getFpsGamesMap() {return fpsGamesMap;}
+    public Map<String, VideoGame> getDungeonCrawlerGamesMap() {return dungeonCrawlerGamesMap;}
 }
