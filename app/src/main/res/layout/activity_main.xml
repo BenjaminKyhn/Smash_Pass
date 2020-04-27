@@ -82,6 +82,18 @@
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
+            <Button
+                android:id="@+id/btnSix"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary"
+                android:onClick="changeToTurnBasedStrategyGames"
+                android:text="Turn-based Strategy Games"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
         </LinearLayout>
 
     </ScrollView>
