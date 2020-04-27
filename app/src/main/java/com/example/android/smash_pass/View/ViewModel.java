@@ -12,16 +12,18 @@ public class ViewModel {
     private Map<String, VideoGame> fpsGamesMap;
     private Map<String, VideoGame> rtsGamesMap;
     private Map<String, VideoGame> turnBasedStrategyGamesMap;
+    private Map<String, VideoGame> mmorpgGamesMap;
     private VideoGame videoGame;
     private FirebaseHandler firebaseHandler;
 
     public ViewModel() {
         firebaseHandler = new FirebaseHandler();
-        dungeonCrawlerGamesMap = firebaseHandler.getdungeonCrawlerGamesMap();
+        dungeonCrawlerGamesMap = firebaseHandler.getDungeonCrawlerGamesMap();
         fightingGamesMap = firebaseHandler.getFightingGamesMap();
         fpsGamesMap = firebaseHandler.getFpsGamesMap();
         rtsGamesMap = firebaseHandler.getRtsGamesMap();
         turnBasedStrategyGamesMap = firebaseHandler.getTurnBasedStrategyGamesMap();
+        mmorpgGamesMap = firebaseHandler.getMmorpgGamesMap();
     }
 
     public ViewModel(String key) {
@@ -30,6 +32,7 @@ public class ViewModel {
         fpsGamesMap = firebaseHandler.getFpsGamesMap();
         rtsGamesMap = firebaseHandler.getRtsGamesMap();
         turnBasedStrategyGamesMap = firebaseHandler.getTurnBasedStrategyGamesMap();
+        mmorpgGamesMap = firebaseHandler.getMmorpgGamesMap();
         videoGame = fightingGamesMap.get(key);
     }
 
@@ -41,7 +44,9 @@ public class ViewModel {
         return videoGame;
     }
 
-    public Map<String, VideoGame> getdungeonCrawlerGamesMap() {return dungeonCrawlerGamesMap;}
+    public Map<String, VideoGame> getDungeonCrawlerGamesMap() {
+        return dungeonCrawlerGamesMap;
+    }
 
     public Map<String, VideoGame> getFightingGamesMap() {
         return fightingGamesMap;
@@ -57,5 +62,9 @@ public class ViewModel {
 
     public  Map<String, VideoGame> getTurnBasedStrategyGamesMap(){
         return turnBasedStrategyGamesMap;
+    }
+
+    public Map<String, VideoGame> getMmorpgGamesMap(){
+        return mmorpgGamesMap;
     }
 }

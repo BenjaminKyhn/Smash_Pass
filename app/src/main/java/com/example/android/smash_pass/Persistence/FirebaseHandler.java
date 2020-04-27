@@ -18,11 +18,13 @@ public class FirebaseHandler {
     private DatabaseReference fpsGamesReference;
     private DatabaseReference rtsGamesReference;
     private DatabaseReference turnBasedStrategyGamesReference;
+    private DatabaseReference mmorpgGamesReference;
     private Map<String, VideoGame> dungeonCrawlerGamesMap = new HashMap<>();
     private Map<String, VideoGame> fightingGamesMap = new HashMap<>();
     private Map<String, VideoGame> fpsGamesMap = new HashMap<>();
     private Map<String, VideoGame> rtsGamesMap = new HashMap<>();
     private Map<String, VideoGame> turnBasedStrategyGamesMap = new HashMap<>();
+    private Map<String, VideoGame> mmorpgGamesMap = new HashMap<>();
 
     public FirebaseHandler() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -31,6 +33,7 @@ public class FirebaseHandler {
         fpsGamesReference = firebaseDatabase.getReference("FPS Games");
         rtsGamesReference = firebaseDatabase.getReference("RTS Games");
         turnBasedStrategyGamesReference = firebaseDatabase.getReference("Turn-based Strategy Games");
+        mmorpgGamesReference = firebaseDatabase.getReference("MMORPG Games");
         saveToDatabase();
         getDatabase();
     }
@@ -115,6 +118,22 @@ public class FirebaseHandler {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+        mmorpgGamesReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dataSnapshotChild : dataSnapshot.getChildren()) {
+                    VideoGame videoGame = dataSnapshotChild.getValue(VideoGame.class);
+
+                    mmorpgGamesMap.put(dataSnapshotChild.getKey(), videoGame);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     // With the current database structure, we're commited to adding all games of a certain genre whenever we want to add one game. Because if we just add one game the others will be removed.
@@ -134,7 +153,10 @@ public class FirebaseHandler {
         rtsGamesMap.put("Mount & Blade II: Bannerlord", new VideoGame("Mount & Blade II: Bannerlord", "RTS Games", "PC", 2020, 0, true));
         rtsGamesReference.setValue(rtsGamesMap);
         turnBasedStrategyGamesMap.put("Civilization V", new VideoGame("Civilization V", "Turn-based Strategy Games", "PC", 2010, 12, true));
-        rtsGamesReference.setValue(turnBasedStrategyGamesMap);
+        turnBasedStrategyGamesReference.setValue(turnBasedStrategyGamesMap);
+        mmorpgGamesMap.put("World of Warcraft: Classic", new VideoGame("World of Warcraft: Classic", "MMORPG Games", "PC", 2019, 125000, true));
+        mmorpgGamesMap.put("World of Warcraft: Battle for Azeroth", new VideoGame("World of Warcraft: Battle for Azeroth", "MMORPG Games", "PC", 2018, 125000, true));
+        mmorpgGamesReference.setValue(mmorpgGamesMap);
     }
 
     public void printStuff(Map<String, VideoGame> retrievedVideoGames) {
@@ -152,14 +174,19 @@ public class FirebaseHandler {
         return fpsGamesMap;
     }
 
-    public Map<String, VideoGame> getRtsGamesMap(){
+    public Map<String, VideoGame> getRtsGamesMap() {
         return rtsGamesMap;
     }
 
-    public Map<String, VideoGame> getTurnBasedStrategyGamesMap(){
+    public Map<String, VideoGame> getTurnBasedStrategyGamesMap() {
         return turnBasedStrategyGamesMap;
     }
 
-    public Map<String, VideoGame> getdungeonCrawlerGamesMap() {return dungeonCrawlerGamesMap;
+    public Map<String, VideoGame> getDungeonCrawlerGamesMap() {
+        return dungeonCrawlerGamesMap;
+    }
+
+    public Map<String, VideoGame> getMmorpgGamesMap() {
+        return mmorpgGamesMap;
     }
 }
