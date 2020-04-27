@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
 
 public class FPSGamesActivity extends AppCompatActivity {
@@ -20,4 +21,11 @@ public class FPSGamesActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, MainActivity.class);
         startActivity(myIntent);
     }
+
+    public void changeToVideoGame(View view, VideoGame videoGame) {
+        Intent myIntent = new Intent(this, VideoGameActivity.class);
+        startActivity(myIntent);
+    }
+
+
 }
