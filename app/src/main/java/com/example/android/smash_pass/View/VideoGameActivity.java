@@ -30,20 +30,20 @@ public class VideoGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_game);
 
         titleText = findViewById(R.id.titleText);
+        mainImage = findViewById(R.id.mainImage);
         genreText = findViewById(R.id.genreText);
         platformText = findViewById(R.id.platformText);
         yearText = findViewById(R.id.yearText);
         numberOfPlayersText = findViewById(R.id.numberOfPlayersText);
         onlinePlayText = findViewById(R.id.onlinePlayText);
 
-        mainImage = findViewById(R.id.mainImage);
-        String pictureUrl = "https://www.pngitem.com/pimgs/m/157-1579710_picture-chuck-norris-hd-png-download.png";
-        Picasso.get().load(pictureUrl).into(mainImage);
-
         populateViews();
     }
 
     private void populateViews() {
+//        String pictureUrl = "https://www.pngitem.com/pimgs/m/157-1579710_picture-chuck-norris-hd-png-download.png";
+        String pictureUrl = videoGame.getScreenshots().get(0);
+        Picasso.get().load(pictureUrl).into(mainImage);
 //        viewModel = new ViewModel("Super Smash Bros Ultimate");
 //        videoGame = viewModel.getVideoGame();
         titleText.setText(videoGame.getName());
