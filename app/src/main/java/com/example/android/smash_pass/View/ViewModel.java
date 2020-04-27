@@ -10,6 +10,7 @@ public class ViewModel {
     private Map<String, VideoGame> fightingGamesMap;
     private Map<String, VideoGame> fpsGamesMap;
     private Map<String, VideoGame> rtsGamesMap;
+    private Map<String, VideoGame> turnBasedStrategyGamesMap;
     private VideoGame videoGame;
     private FirebaseHandler firebaseHandler;
 
@@ -18,6 +19,7 @@ public class ViewModel {
         fightingGamesMap = firebaseHandler.getFightingGamesMap();
         fpsGamesMap = firebaseHandler.getFpsGamesMap();
         rtsGamesMap = firebaseHandler.getRtsGamesMap();
+        turnBasedStrategyGamesMap = firebaseHandler.getTurnBasedStrategyGamesMap();
     }
 
     public ViewModel(String key) {
@@ -25,6 +27,7 @@ public class ViewModel {
         fightingGamesMap = firebaseHandler.getFightingGamesMap();
         fpsGamesMap = firebaseHandler.getFpsGamesMap();
         rtsGamesMap = firebaseHandler.getRtsGamesMap();
+        turnBasedStrategyGamesMap = firebaseHandler.getTurnBasedStrategyGamesMap();
         videoGame = fightingGamesMap.get(key);
     }
 
@@ -46,5 +49,9 @@ public class ViewModel {
 
     public Map<String, VideoGame> getRtsGamesMap() {
         return rtsGamesMap;
+    }
+
+    public  Map<String, VideoGame> getTurnBasedStrategyGamesMap(){
+        return turnBasedStrategyGamesMap;
     }
 }
