@@ -39,10 +39,13 @@ public class VideoGameActivity extends AppCompatActivity {
     }
 
     private void populateViews() {
+        // Populate the ImageView
         if (videoGame.getScreenshots() != null){
             String pictureUrl = videoGame.getScreenshots().get(0);
             Picasso.get().load(pictureUrl).into(mainImage);
         }
+
+        // Populate the TextViews
         titleText.setText(videoGame.getName());
         genreText.setText(videoGame.getGenre());
         platformText.setText(videoGame.getPlatform());
