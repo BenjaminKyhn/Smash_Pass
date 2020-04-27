@@ -26,16 +26,6 @@ public class ViewModel {
         mmorpgGamesMap = firebaseHandler.getMmorpgGamesMap();
     }
 
-    public ViewModel(String key) {
-        firebaseHandler = new FirebaseHandler();
-        fightingGamesMap = firebaseHandler.getFightingGamesMap();
-        fpsGamesMap = firebaseHandler.getFpsGamesMap();
-        rtsGamesMap = firebaseHandler.getRtsGamesMap();
-        turnBasedStrategyGamesMap = firebaseHandler.getTurnBasedStrategyGamesMap();
-        mmorpgGamesMap = firebaseHandler.getMmorpgGamesMap();
-        videoGame = fightingGamesMap.get(key);
-    }
-
     public void observeVideoGame(MyObserver myObserver) {
         videoGame.addObserver(myObserver);
     }
