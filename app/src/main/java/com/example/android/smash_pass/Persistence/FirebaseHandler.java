@@ -139,6 +139,7 @@ public class FirebaseHandler {
 
     // With the current database structure, we're commited to adding all games of a certain genre whenever we want to add one game. Because if we just add one game the others will be removed.
     public void saveToDatabase() {
+        // Screenshots must be 1:1 scale and 800x800 pixels
         ArrayList<String> screens01 = new ArrayList<>();
         screens01.add("https://i.imgur.com/9W8td80.jpg");
         dungeonCrawlerGamesMap.put("Wizard of Legend", new VideoGame("Wizard of Legend", "Dungeon Crawler Games", "PC", 2018, 2, true, screens01));
