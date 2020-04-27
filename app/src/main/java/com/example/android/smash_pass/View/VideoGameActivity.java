@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.smash_pass.Model.MyObserver;
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
 import com.squareup.picasso.Picasso;
@@ -21,7 +20,6 @@ public class VideoGameActivity extends AppCompatActivity {
     private TextView numberOfPlayersText;
     private TextView onlinePlayText;
     private ImageView mainImage;
-    private ViewModel viewModel;
     public static VideoGame videoGame;
 
     @Override
@@ -45,27 +43,12 @@ public class VideoGameActivity extends AppCompatActivity {
             String pictureUrl = videoGame.getScreenshots().get(0);
             Picasso.get().load(pictureUrl).into(mainImage);
         }
-//        viewModel = new ViewModel("Super Smash Bros Ultimate");
-//        videoGame = viewModel.getVideoGame();
         titleText.setText(videoGame.getName());
         genreText.setText(videoGame.getGenre());
         platformText.setText(videoGame.getPlatform());
         yearText.setText(String.valueOf(videoGame.getYear()));
         numberOfPlayersText.setText(String.valueOf(videoGame.getNumberOfPlayers()));
         onlinePlayText.setText(String.valueOf(videoGame.getOnlinePlay()));
-
-//        viewModel.observeVideoGame(new MyObserver() {
-//            @Override
-//            public void update(Object o) { // This is bad. Why does it take an object parameter if I don't use it?
-//                titleText.setText(videoGame.getName());
-//                genreText.setText(viewModel.getVideoGame().getGenre());
-//                platformText.setText(viewModel.getVideoGame().getPlatform());
-//                yearText.setText(String.valueOf(viewModel.getVideoGame().getYear()));
-//                numberOfPlayersText.setText(String.valueOf(viewModel.getVideoGame().getNumberOfPlayers()));
-//                onlinePlayText.setText(String.valueOf(viewModel.getVideoGame().getOnlinePlay()));
-//                genreText.setText((String) o);
-//            }
-//        });
     }
 
     public void home(View view){
