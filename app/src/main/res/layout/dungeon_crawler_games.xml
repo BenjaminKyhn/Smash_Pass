@@ -10,32 +10,12 @@
         android:scrollbars="vertical">
 
         <LinearLayout
+            android:id="@+id/dungeonCrawlerGamesLinearLayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_margin="20dp"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnOne"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/colorPrimary"
-                android:text="Wizard of Legend"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btnBack"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
-                android:onClick="back"
-                android:text="Back"
-                android:textColor="#fff"
-                android:textSize="20sp" />
 
         </LinearLayout>
 
