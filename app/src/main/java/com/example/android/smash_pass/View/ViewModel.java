@@ -24,9 +24,6 @@ public class ViewModel {
         rtsGamesMap = firebaseHandler.getRtsGamesMap();
         turnBasedStrategyGamesMap = firebaseHandler.getTurnBasedStrategyGamesMap();
         mmorpgGamesMap = firebaseHandler.getMmorpgGamesMap();
-        for(int i = 0; i < fightingGamesMap.size(); i++) {
-            System.out.print(fightingGamesMap.get(i).getName());
-        }
     }
 
     public ViewModel(String key) {
