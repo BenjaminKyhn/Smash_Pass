@@ -153,7 +153,7 @@ public class FirebaseHandler {
         rtsGamesMap.put("Mount & Blade II: Bannerlord", new VideoGame("Mount & Blade II: Bannerlord", "RTS Games", "PC", 2020, 0, true));
         rtsGamesReference.setValue(rtsGamesMap);
         turnBasedStrategyGamesMap.put("Civilization V", new VideoGame("Civilization V", "Turn-based Strategy Games", "PC", 2010, 12, true));
-        rtsGamesReference.setValue(turnBasedStrategyGamesMap);
+        turnBasedStrategyGamesReference.setValue(turnBasedStrategyGamesMap);
         mmorpgGamesMap.put("World of Warcraft: Classic", new VideoGame("World of Warcraft: Classic", "MMORPG Games", "PC", 2019, 125000, true));
         mmorpgGamesMap.put("World of Warcraft: Battle for Azeroth", new VideoGame("World of Warcraft: Battle for Azeroth", "MMORPG Games", "PC", 2018, 125000, true));
         mmorpgGamesReference.setValue(mmorpgGamesMap);
