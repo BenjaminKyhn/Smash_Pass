@@ -10,6 +10,7 @@ public class VideoGame extends MyObservable {
     private long numberOfPlayers;
     private boolean onlinePlay;
     private double smashFactor;
+
     private ArrayList<String> screenshots;
 
     public VideoGame() {
@@ -96,5 +97,13 @@ public class VideoGame extends MyObservable {
 
     public void setSmashFactor(double smashFactor) {
         this.smashFactor = smashFactor;
+    }
+
+    public ArrayList<String> getScreenshots() {
+        return screenshots;
+    }
+
+    public void setScreenshots(ArrayList<String> screenshots) {
+        this.screenshots = screenshots;
     }
 }
