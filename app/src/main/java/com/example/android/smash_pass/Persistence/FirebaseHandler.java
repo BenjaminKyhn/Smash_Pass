@@ -89,6 +89,8 @@ public class FirebaseHandler {
         fpsGamesMap.put("Call of Duty: Modern Warfare 2", new VideoGame("Call of Duty: Modern Warfare 2", "FPS Games", "PC", 2009, 12, true));
         fpsGamesReference.setValue(fpsGamesMap);
         rtsGamesMap.put("Starcraft II", new VideoGame("Starcraft II", "RTS Games", "PC", 2010, 8, true));
+        rtsGamesMap.put("Age of Empires II: Definitive Edition", new VideoGame("Age of Empires II: Definitive Edition", "RTS Games", "PC", 2019, 4, true));
+        rtsGamesMap.put("Mount & Blade II: Bannerlord", new VideoGame("Mount & Blade II: Bannerlord", "RTS Games", "PC", 2020, 0, true));
         rtsGamesReference.setValue(rtsGamesMap);
     }
 
