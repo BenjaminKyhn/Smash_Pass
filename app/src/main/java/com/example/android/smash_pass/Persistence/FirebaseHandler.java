@@ -13,10 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirebaseHandler {
+    private DatabaseReference dungeonCrawlerGamesReference;
     private DatabaseReference fightingGamesReference;
     private DatabaseReference fpsGamesReference;
     private DatabaseReference rtsGamesReference;
     private DatabaseReference turnBasedStrategyGamesReference;
+    private Map<String, VideoGame> dungeonCrawlerGamesMap = new HashMap<>();
     private Map<String, VideoGame> fightingGamesMap = new HashMap<>();
     private Map<String, VideoGame> fpsGamesMap = new HashMap<>();
     private Map<String, VideoGame> rtsGamesMap = new HashMap<>();
@@ -24,6 +26,7 @@ public class FirebaseHandler {
 
     public FirebaseHandler() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        dungeonCrawlerGamesReference = firebaseDatabase.getReference("Dungeon Crawler Games");
         fightingGamesReference = firebaseDatabase.getReference("Fighting Games");
         fpsGamesReference = firebaseDatabase.getReference("FPS Games");
         rtsGamesReference = firebaseDatabase.getReference("RTS Games");
@@ -96,10 +99,28 @@ public class FirebaseHandler {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+        dungeonCrawlerGamesReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dataSnapshotChild : dataSnapshot.getChildren()) {
+                    VideoGame videoGame = dataSnapshotChild.getValue(VideoGame.class);
+
+                    dungeonCrawlerGamesMap.put(dataSnapshotChild.getKey(), videoGame);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     // With the current database structure, we're commited to adding all games of a certain genre whenever we want to add one game. Because if we just add one game the others will be removed.
     public void saveToDatabase() {
+        dungeonCrawlerGamesMap.put("Wizard of Legend", new VideoGame("Wizard of Legend", "Dungeon Crawler Games", "PC", 2018, 2, true));
+        dungeonCrawlerGamesReference.setValue(dungeonCrawlerGamesMap);
         fightingGamesMap.put("Super Smash Bros Ultimate", new VideoGame("Super Smash Bros Ultimate", "Fighting Games", "Nintendo Switch", 2018, 8, true));
         fightingGamesMap.put("Super Smash Bros 4", new VideoGame("Super Smash Bros 4", "Fighting Games", "Nintendo Wii U", 2014, 8, true));
         fightingGamesMap.put("Tekken Tag Tournament 2", new VideoGame("Tekken Tag Tournament 2", "Fighting Games", "PlayStation 3", 2011, 2, true));
@@ -137,5 +158,8 @@ public class FirebaseHandler {
 
     public Map<String, VideoGame> getTurnBasedStrategyGamesMap(){
         return turnBasedStrategyGamesMap;
+    }
+
+    public Map<String, VideoGame> getdungeonCrawlerGamesMap() {return dungeonCrawlerGamesMap;
     }
 }
