@@ -1,5 +1,8 @@
 package com.example.android.smash_pass.View;
 
+import android.view.View;
+
+import com.example.android.smash_pass.Model.MyObservable;
 import com.example.android.smash_pass.Model.MyObserver;
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.Persistence.FirebaseHandler;
@@ -13,11 +16,14 @@ public class ViewModel {
     private Map<String, VideoGame> rtsGamesMap;
     private Map<String, VideoGame> turnBasedStrategyGamesMap;
     private Map<String, VideoGame> mmorpgGamesMap;
-    private VideoGame videoGame;
+//    private VideoGame videoGame;
+    private MyObservable myObservable;
     private FirebaseHandler firebaseHandler;
+    private static ViewModel viewModel;
 
-    public ViewModel() {
-        firebaseHandler = new FirebaseHandler();
+    private ViewModel() {
+        myObservable = new MyObservable();
+        firebaseHandler = new FirebaseHandler(myObservable);
         dungeonCrawlerGamesMap = firebaseHandler.getDungeonCrawlerGamesMap();
         fightingGamesMap = firebaseHandler.getFightingGamesMap();
         fpsGamesMap = firebaseHandler.getFpsGamesMap();
@@ -26,13 +32,21 @@ public class ViewModel {
         mmorpgGamesMap = firebaseHandler.getMmorpgGamesMap();
     }
 
-    public void observeVideoGame(MyObserver myObserver) {
-        videoGame.addObserver(myObserver);
+    public static synchronized ViewModel getInstance() {
+        if (viewModel == null)
+            viewModel = new ViewModel();
+
+        return viewModel;
     }
 
-    public VideoGame getVideoGame() {
-        return videoGame;
+    public void observeVideoGame(MyObserver myObserver) {
+//        videoGame.addObserver(myObserver);
+        myObservable.addObserver(myObserver);
     }
+
+//    public VideoGame getVideoGame() {
+//        return videoGame;
+//    }
 
     public Map<String, VideoGame> getDungeonCrawlerGamesMap() {
         return dungeonCrawlerGamesMap;
@@ -50,11 +64,11 @@ public class ViewModel {
         return rtsGamesMap;
     }
 
-    public  Map<String, VideoGame> getTurnBasedStrategyGamesMap(){
+    public Map<String, VideoGame> getTurnBasedStrategyGamesMap() {
         return turnBasedStrategyGamesMap;
     }
 
-    public Map<String, VideoGame> getMmorpgGamesMap(){
+    public Map<String, VideoGame> getMmorpgGamesMap() {
         return mmorpgGamesMap;
     }
 }

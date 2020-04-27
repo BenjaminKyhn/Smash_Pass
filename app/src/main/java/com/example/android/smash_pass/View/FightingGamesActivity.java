@@ -12,11 +12,12 @@ import android.widget.LinearLayout;
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class FightingGamesActivity extends AppCompatActivity {
-    private ViewModel viewModel;
     private Map<String, VideoGame> fightingGamesMap;
+    private String t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +25,18 @@ public class FightingGamesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fighting_games);
 
         // Instantiate a view model so we can get the map of video games
-        viewModel = new ViewModel();
-        fightingGamesMap = viewModel.getFightingGamesMap();
+//        fightingGamesMap = viewModel.getFightingGamesMap();
+
+        Intent startIntent = getIntent();
+        fightingGamesMap = (HashMap<String, VideoGame>) startIntent.getSerializableExtra("map");
 
         // Create a list of buttons and add them to the activity
         createButtons();
     }
 
+
     public void back(View view) {
-        Intent myIntent = new Intent(this, MainActivity.class);
-        startActivity(myIntent);
+        finish();
     }
 
     public void changeToVideoGame(View view, VideoGame videoGame) {

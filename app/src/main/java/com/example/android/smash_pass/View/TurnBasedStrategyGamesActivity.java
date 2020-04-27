@@ -23,7 +23,7 @@ public class TurnBasedStrategyGamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turn_based_strategy_games);
 
-        viewModel = new ViewModel();
+        viewModel = ViewModel.getInstance();
         turnBasedStrategyGamesMap = viewModel.getTurnBasedStrategyGamesMap();
 
         createButtons();

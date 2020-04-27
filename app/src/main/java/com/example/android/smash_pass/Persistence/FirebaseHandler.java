@@ -2,6 +2,7 @@ package com.example.android.smash_pass.Persistence;
 
 import androidx.annotation.NonNull;
 
+import com.example.android.smash_pass.Model.MyObservable;
 import com.example.android.smash_pass.Model.VideoGame;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,8 +27,10 @@ public class FirebaseHandler {
     private Map<String, VideoGame> rtsGamesMap = new HashMap<>();
     private Map<String, VideoGame> turnBasedStrategyGamesMap = new HashMap<>();
     private Map<String, VideoGame> mmorpgGamesMap = new HashMap<>();
+    private MyObservable myObservable;
 
-    public FirebaseHandler() {
+    public FirebaseHandler(MyObservable myObservable) {
+        this.myObservable = myObservable;
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         dungeonCrawlerGamesReference = firebaseDatabase.getReference("Dungeon Crawler Games");
         fightingGamesReference = firebaseDatabase.getReference("Fighting Games");
@@ -35,7 +38,7 @@ public class FirebaseHandler {
         rtsGamesReference = firebaseDatabase.getReference("RTS Games");
         turnBasedStrategyGamesReference = firebaseDatabase.getReference("Turn-based Strategy Games");
         mmorpgGamesReference = firebaseDatabase.getReference("MMORPG Games");
-        saveToDatabase();
+//        saveToDatabase();
         getDatabase();
     }
 
@@ -43,12 +46,11 @@ public class FirebaseHandler {
         fightingGamesReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 for (DataSnapshot dataSnapshotChild : dataSnapshot.getChildren()) {
                     VideoGame videoGame = dataSnapshotChild.getValue(VideoGame.class);
-
                     fightingGamesMap.put(dataSnapshotChild.getKey(), videoGame);
                 }
+                myObservable.notifyObservers(fightingGamesMap);
             }
 
             @Override

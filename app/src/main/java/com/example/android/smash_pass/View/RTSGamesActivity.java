@@ -23,7 +23,7 @@ public class RTSGamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_r_t_s_games);
 
-        viewModel = new ViewModel();
+        viewModel = ViewModel.getInstance();
         rtsGamesMap = viewModel.getRtsGamesMap();
 
         createButtons();

@@ -1,8 +1,9 @@
 package com.example.android.smash_pass.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class VideoGame extends MyObservable {
+public class VideoGame extends MyObservable implements Serializable {
     private String name;
     private String genre;
     private String platform;

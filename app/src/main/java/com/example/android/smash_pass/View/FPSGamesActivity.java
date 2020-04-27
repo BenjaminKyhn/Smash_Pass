@@ -23,7 +23,7 @@ public class FPSGamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_p_s_games);
 
-        viewModel = new ViewModel();
+        viewModel = ViewModel.getInstance();
         fpsGamesMap = viewModel.getfpsGamesMap();
 
         createButtons();

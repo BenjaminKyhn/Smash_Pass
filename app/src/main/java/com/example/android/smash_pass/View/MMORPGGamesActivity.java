@@ -23,7 +23,7 @@ public class MMORPGGamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_m_m_o_r_p_g_games_);
 
-        viewModel = new ViewModel();
+        viewModel = ViewModel.getInstance();
         mmorpgGamesMap = viewModel.getMmorpgGamesMap();
 
         createButtons();
