@@ -12,20 +12,23 @@ import android.widget.LinearLayout;
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class RTSGamesActivity extends AppCompatActivity {
-    private ViewModel viewModel;
-    private Map<String, VideoGame> rtsGamesMap;
+public class GenresActivity extends AppCompatActivity {
+    private Map<String, VideoGame> videoGameMap;
+    public static String currentGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_r_t_s_games);
+        setContentView(R.layout.activity_genres);
 
-        viewModel = ViewModel.getInstance();
-        rtsGamesMap = viewModel.getRtsGamesMap();
+        // Get the intent that was passed to this Activity
+        Intent startIntent = getIntent();
+        videoGameMap = (HashMap<String, VideoGame>) startIntent.getSerializableExtra("map");
 
+        // Create a list of buttons and add them to the activity
         createButtons();
     }
 
@@ -36,42 +39,44 @@ public class RTSGamesActivity extends AppCompatActivity {
     public void changeToVideoGame(View view, VideoGame videoGame) {
         Intent myIntent = new Intent(this, VideoGameActivity.class);
         startActivity(myIntent);
-        VideoGameActivity.videoGame = videoGame;
+        VideoGameActivity.currentVideoGame = videoGame;
     }
 
     public void createButtons() {
-        LinearLayout linearLayout = findViewById(R.id.rtsGamesLinearLayout);
+        LinearLayout linearLayout = findViewById(R.id.genresLinearLayout);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(0, 40, 0, 0);
 
-        for (String key : rtsGamesMap.keySet()) {
+        for (String key : videoGameMap.keySet()) {
             // Create the video game object
-            final VideoGame videoGame = rtsGamesMap.get(key);
+            final VideoGame videoGame = videoGameMap.get(key);
 
-            // Create a button
-            Button myButton = new Button(this);
+            if (videoGame.getGenre().equals(currentGenre)){
+                // Create a button
+                Button myButton = new Button(this);
 
-            // Set the appearance of the button
-            myButton.setLayoutParams(params);
-            myButton.setTextSize(20);
-            myButton.setTextColor(Color.WHITE);
-            myButton.setBackgroundColor(Color.parseColor("#6200EE"));
-            String gameTitle = videoGame.getName();
-            myButton.setText(gameTitle);
+                // Set the appearance of the button
+                myButton.setLayoutParams(params);
+                myButton.setTextSize(20);
+                myButton.setTextColor(Color.WHITE);
+                myButton.setBackgroundColor(Color.parseColor("#6200EE"));
+                String gameTitle = videoGame.getName();
+                myButton.setText(gameTitle);
 
-            // Give the button an on-click method to switch intent
-            myButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    changeToVideoGame(v, videoGame);
-                }
-            });
+                // Give the button an on-click method to switch intent
+                myButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changeToVideoGame(v, videoGame);
+                    }
+                });
 
-            // Add the button to the activity as a ButtonView
-            linearLayout.addView(myButton);
+                // Add the button to the activity as a ButtonView
+                linearLayout.addView(myButton);
+            }
         }
 
         Button backButton = new Button(this);

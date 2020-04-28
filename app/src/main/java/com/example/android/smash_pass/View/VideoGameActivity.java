@@ -2,7 +2,6 @@ package com.example.android.smash_pass.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,7 +19,7 @@ public class VideoGameActivity extends AppCompatActivity {
     private TextView numberOfPlayersText;
     private TextView onlinePlayText;
     private ImageView mainImage;
-    public static VideoGame videoGame;
+    public static VideoGame currentVideoGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +39,18 @@ public class VideoGameActivity extends AppCompatActivity {
 
     private void populateViews() {
         // Populate the ImageView
-        if (videoGame.getScreenshots() != null){
-            String pictureUrl = videoGame.getScreenshots().get(0);
+        if (currentVideoGame.getScreenshots() != null){
+            String pictureUrl = currentVideoGame.getScreenshots().get(0);
             Picasso.get().load(pictureUrl).into(mainImage);
         }
 
         // Populate the TextViews
-        titleText.setText(videoGame.getName());
-        genreText.setText(videoGame.getGenre());
-        platformText.setText(videoGame.getPlatform());
-        yearText.setText(String.valueOf(videoGame.getYear()));
-        numberOfPlayersText.setText(String.valueOf(videoGame.getNumberOfPlayers()));
-        onlinePlayText.setText(String.valueOf(videoGame.getOnlinePlay()));
+        titleText.setText(currentVideoGame.getName());
+        genreText.setText(currentVideoGame.getGenre());
+        platformText.setText(currentVideoGame.getPlatform());
+        yearText.setText(String.valueOf(currentVideoGame.getYear()));
+        numberOfPlayersText.setText(String.valueOf(currentVideoGame.getNumberOfPlayers()));
+        onlinePlayText.setText(String.valueOf(currentVideoGame.getOnlinePlay()));
     }
 
     public void back(View view){

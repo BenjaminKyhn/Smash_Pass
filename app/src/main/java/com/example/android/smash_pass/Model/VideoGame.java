@@ -44,7 +44,7 @@ public class VideoGame extends MyObservable implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-        notifyObservers(this.name); // Hvorfor passer vi en String som argument, når notifyObservers tager imod et object?
+        notifyObservers(this.name);
     }
 
     public String getGenre() {
