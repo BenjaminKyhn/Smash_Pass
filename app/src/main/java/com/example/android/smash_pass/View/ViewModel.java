@@ -1,7 +1,5 @@
 package com.example.android.smash_pass.View;
 
-import android.view.View;
-
 import com.example.android.smash_pass.Model.MyObservable;
 import com.example.android.smash_pass.Model.MyObserver;
 import com.example.android.smash_pass.Model.VideoGame;
@@ -40,13 +38,9 @@ public class ViewModel {
     }
 
     public void observeVideoGame(MyObserver myObserver) {
-//        videoGame.addObserver(myObserver);
         myObservable.addObserver(myObserver);
     }
 
-//    public VideoGame getVideoGame() {
-//        return videoGame;
-//    }
 
     public Map<String, VideoGame> getDungeonCrawlerGamesMap() {
         return dungeonCrawlerGamesMap;

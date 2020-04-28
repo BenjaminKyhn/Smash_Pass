@@ -10,9 +10,7 @@ import com.example.android.smash_pass.Model.MyObserver;
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private ViewModel viewModel;
