@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         params.setMargins(0, 40, 0, 0);
 
         // Iterate through the list of genres
-        for (String genre : allGenres){
+        for (final String genre : allGenres){
             // Create a button
             Button myButton = new Button(this);
 
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    changeToFightingGames(v);
+                    changeToFightingGames(v, genre);
                 }
             });
 
@@ -87,11 +87,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void changeToFightingGames(View view) {
+    public void changeToFightingGames(View view, String genre) {
         Intent myIntent = new Intent(this, FightingGamesActivity.class);
         myIntent.putExtra("map", fightingGamesMap);
         startActivity(myIntent);
-        FightingGamesActivity.currentGenre = "Fighting Games";
+        FightingGamesActivity.currentGenre = genre;
     }
 
     public void changeToFPSGames(View view) {
