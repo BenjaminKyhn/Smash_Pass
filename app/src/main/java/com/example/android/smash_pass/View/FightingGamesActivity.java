@@ -23,16 +23,13 @@ public class FightingGamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fighting_games);
 
-        // Instantiate a view model so we can get the map of video games
-//        fightingGamesMap = viewModel.getFightingGamesMap();
-
+        // Get the intent that was passed to this Activity
         Intent startIntent = getIntent();
         fightingGamesMap = (HashMap<String, VideoGame>) startIntent.getSerializableExtra("map");
 
         // Create a list of buttons and add them to the activity
         createButtons();
     }
-
 
     public void back(View view) {
         finish();
