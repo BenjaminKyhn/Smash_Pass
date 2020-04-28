@@ -30,8 +30,7 @@ public class DungeonCrawlerGamesActivity extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent myIntent = new Intent(this, MainActivity.class);
-        startActivity(myIntent);
+        finish();
     }
 
     public void changeToVideoGame(View view, VideoGame videoGame) {

@@ -54,8 +54,7 @@ public class VideoGameActivity extends AppCompatActivity {
         onlinePlayText.setText(String.valueOf(videoGame.getOnlinePlay()));
     }
 
-    public void home(View view){
-        Intent myIntent = new Intent(this, MainActivity.class);
-        startActivity(myIntent);
+    public void back(View view){
+        finish();
     }
 }

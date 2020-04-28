@@ -144,8 +144,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:background="@color/colorPrimary"
-                    android:onClick="home"
-                    android:text="Home"
+                    android:onClick="back"
+                    android:text="Back"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 

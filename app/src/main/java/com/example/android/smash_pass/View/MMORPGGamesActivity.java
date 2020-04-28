@@ -29,9 +29,8 @@ public class MMORPGGamesActivity extends AppCompatActivity {
         createButtons();
     }
 
-    public void back(View view){
-        Intent myIntent = new Intent(this, MainActivity.class);
-        startActivity(myIntent);
+    public void back(View view) {
+        finish();
     }
 
     public void changeToVideoGame(View view, VideoGame videoGame) {
