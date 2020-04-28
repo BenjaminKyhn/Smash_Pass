@@ -144,6 +144,9 @@ public class FirebaseHandler {
         ArrayList<String> screens01 = new ArrayList<>();
         screens01.add("https://i.imgur.com/9l7kRbw.jpg");
         dungeonCrawlerGamesMap.put("Wizard of Legend", new VideoGame("Wizard of Legend", "Dungeon Crawler Games", "PC", 2018, 2, true, screens01));
+        ArrayList<String> screens17 = new ArrayList<>();
+        screens17.add("https://i.imgur.com/7WxilCt.jpg");
+        dungeonCrawlerGamesMap.put("Diablo II", new VideoGame("Diablo II", "Dungeon Crawler Games", "PC", 2000, 2, true, screens17));
         dungeonCrawlerGamesReference.setValue(dungeonCrawlerGamesMap);
         ArrayList<String> screens02 = new ArrayList<>();
         screens02.add("https://i.imgur.com/Ngn7XiR.jpg");
