@@ -11,7 +11,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FirebaseHandler {
@@ -148,6 +151,9 @@ public class FirebaseHandler {
         screens17.add("https://i.imgur.com/7WxilCt.jpg");
         dungeonCrawlerGamesMap.put("Diablo II", new VideoGame("Diablo II", "Dungeon Crawler Games", "PC", 2000, 2, true, screens17));
         dungeonCrawlerGamesReference.setValue(dungeonCrawlerGamesMap);
+        ArrayList<String> screens18 = new ArrayList<>();
+        screens18.add("https://i.imgur.com/NhV9SpN.jpg");
+        fightingGamesMap.put("Starcraft II", new VideoGame("Starcraft II", "RTS Games", "PC", 2010, 8, true, screens18));
         ArrayList<String> screens02 = new ArrayList<>();
         screens02.add("https://i.imgur.com/Ngn7XiR.jpg");
         fightingGamesMap.put("Super Smash Bros Ultimate", new VideoGame("Super Smash Bros Ultimate", "Fighting Games", "Nintendo Switch", 2018, 8, true, screens02));
