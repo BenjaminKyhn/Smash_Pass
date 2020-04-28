@@ -15,18 +15,18 @@ import com.example.android.smash_pass.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FightingGamesActivity extends AppCompatActivity {
-    private Map<String, VideoGame> fightingGamesMap;
+public class GenresActivity extends AppCompatActivity {
+    private Map<String, VideoGame> videoGameMap;
     public static String currentGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fighting_games);
+        setContentView(R.layout.activity_genres);
 
         // Get the intent that was passed to this Activity
         Intent startIntent = getIntent();
-        fightingGamesMap = (HashMap<String, VideoGame>) startIntent.getSerializableExtra("map");
+        videoGameMap = (HashMap<String, VideoGame>) startIntent.getSerializableExtra("map");
 
         // Create a list of buttons and add them to the activity
         createButtons();
@@ -43,16 +43,16 @@ public class FightingGamesActivity extends AppCompatActivity {
     }
 
     public void createButtons() {
-        LinearLayout linearLayout = findViewById(R.id.fightingGamesLinearLayout);
+        LinearLayout linearLayout = findViewById(R.id.genresLinearLayout);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(0, 40, 0, 0);
 
-        for (String key : fightingGamesMap.keySet()) {
+        for (String key : videoGameMap.keySet()) {
             // Create the video game object
-            final VideoGame videoGame = fightingGamesMap.get(key);
+            final VideoGame videoGame = videoGameMap.get(key);
 
             if (videoGame.getGenre().equals(currentGenre)){
                 // Create a button

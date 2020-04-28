@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".View.VideoGameActivity" />
-        <activity android:name=".View.FightingGamesActivity" />
+        <activity android:name=".View.GenresActivity" />
         <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

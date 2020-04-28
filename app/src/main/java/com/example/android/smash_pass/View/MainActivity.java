@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     private ViewModel viewModel;
-    private HashMap<String, VideoGame> fightingGamesMap;
+    private HashMap<String, VideoGame> videoGameMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Create a list and add all genres from the map to the list
         ArrayList<String> allGenres = new ArrayList<>();
-        for (String key : fightingGamesMap.keySet()) {
+        for (String key : videoGameMap.keySet()) {
 
-            final VideoGame videoGame = fightingGamesMap.get(key);
+            final VideoGame videoGame = videoGameMap.get(key);
 
             if (!allGenres.contains(videoGame.getGenre()))
                 allGenres.add(videoGame.getGenre());
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    changeToFightingGames(v, genre);
+                    openGenre(v, genre);
                 }
             });
 
@@ -82,15 +82,15 @@ public class MainActivity extends AppCompatActivity {
         viewModel.observeVideoGame(new MyObserver() {
             @Override
             public void update(Object o) {
-                fightingGamesMap = (HashMap<String, VideoGame>) o;
+                videoGameMap = (HashMap<String, VideoGame>) o;
             }
         });
     }
 
-    public void changeToFightingGames(View view, String genre) {
-        Intent myIntent = new Intent(this, FightingGamesActivity.class);
-        myIntent.putExtra("map", fightingGamesMap);
+    public void openGenre(View view, String genre) {
+        Intent myIntent = new Intent(this, GenresActivity.class);
+        myIntent.putExtra("map", videoGameMap);
         startActivity(myIntent);
-        FightingGamesActivity.currentGenre = genre;
+        GenresActivity.currentGenre = genre;
     }
 }
