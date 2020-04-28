@@ -93,29 +93,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
         FightingGamesActivity.currentGenre = genre;
     }
-
-    public void changeToFPSGames(View view) {
-        Intent myIntent = new Intent(this, FPSGamesActivity.class);
-        startActivity(myIntent);
-    }
-
-    public void changeToMMOGames(View view) {
-        Intent myIntent = new Intent(this, MMORPGGamesActivity.class);
-        startActivity(myIntent);
-    }
-
-    public void changeToRTSGames(View view) {
-        Intent myIntent = new Intent(this, RTSGamesActivity.class);
-        startActivity(myIntent);
-    }
-
-    public void changeToDungeonCrawlerGames(View view) {
-        Intent myIntent = new Intent(this, DungeonCrawlerGamesActivity.class);
-        startActivity(myIntent);
-    }
-
-    public void changeToTurnBasedStrategyGames(View view) {
-        Intent myIntent = new Intent(this, TurnBasedStrategyGamesActivity.class);
-        startActivity(myIntent);
-    }
 }
