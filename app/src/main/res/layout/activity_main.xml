@@ -11,6 +11,7 @@
         android:scrollbars="vertical">
 
         <LinearLayout
+            android:id="@+id/mainLinearLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -22,74 +23,14 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnFive"
+                android:id="@+id/btnStart"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorPrimary"
-                android:onClick="changeToDungeonCrawlerGames"
-                android:text="Dungeon Crawler Games"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btnOne"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
-                android:onClick="changeToFightingGames"
-                android:text="Fighting Games"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btnTwo"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
-                android:onClick="changeToFPSGames"
-                android:text="FPS Games"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btnThree"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
-                android:onClick="changeToMMOGames"
-                android:text="MMORPG Games"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btnFour"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
-                android:onClick="changeToRTSGames"
-                android:text="RTS Games"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btnSix"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
-                android:onClick="changeToTurnBasedStrategyGames"
-                android:text="Turn-based Strategy Games"
+                android:onClick="createButtons"
+                android:text="Start"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 

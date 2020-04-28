@@ -17,6 +17,7 @@ import java.util.Map;
 
 public class FightingGamesActivity extends AppCompatActivity {
     private Map<String, VideoGame> fightingGamesMap;
+    public static String currentGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
