@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class GenresActivity extends AppCompatActivity {
     private Map<String, VideoGame> videoGameMap;
-    public static String currentGenre;
+    private String currentGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class GenresActivity extends AppCompatActivity {
         // Get the intent that was passed to this Activity
         Intent startIntent = getIntent();
         videoGameMap = (HashMap<String, VideoGame>) startIntent.getSerializableExtra("map");
+        currentGenre = startIntent.getStringExtra("genre");
 
         // Create a list of buttons and add them to the activity
         createButtons();
@@ -36,10 +37,10 @@ public class GenresActivity extends AppCompatActivity {
         finish();
     }
 
-    public void changeToVideoGame(View view, VideoGame videoGame) {
+    public void openVideoGame(VideoGame videoGame) {
         Intent myIntent = new Intent(this, VideoGameActivity.class);
+        myIntent.putExtra("videoGame", videoGame);
         startActivity(myIntent);
-        VideoGameActivity.currentVideoGame = videoGame;
     }
 
     public void createButtons() {
@@ -71,7 +72,7 @@ public class GenresActivity extends AppCompatActivity {
                 myButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        changeToVideoGame(v, videoGame);
+                        openVideoGame(videoGame);
                     }
                 });
 

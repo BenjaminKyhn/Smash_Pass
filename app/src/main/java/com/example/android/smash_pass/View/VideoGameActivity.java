@@ -2,6 +2,7 @@ package com.example.android.smash_pass.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ public class VideoGameActivity extends AppCompatActivity {
     private TextView numberOfPlayersText;
     private TextView onlinePlayText;
     private ImageView mainImage;
-    public static VideoGame currentVideoGame;
+    private VideoGame currentVideoGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,10 @@ public class VideoGameActivity extends AppCompatActivity {
         yearText = findViewById(R.id.yearText);
         numberOfPlayersText = findViewById(R.id.numberOfPlayersText);
         onlinePlayText = findViewById(R.id.onlinePlayText);
+
+        Intent startIntent = getIntent();
+        currentVideoGame = (VideoGame) startIntent.getSerializableExtra("videoGame");
+        System.out.println(currentVideoGame.getName());
 
         populateViews();
     }

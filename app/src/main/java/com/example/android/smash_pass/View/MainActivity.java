@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void openGenre(String genre) {
         Intent myIntent = new Intent(this, GenresActivity.class);
-        startActivity(myIntent);
         myIntent.putExtra("map", videoGameMap);
-        GenresActivity.currentGenre = genre;
+        myIntent.putExtra("genre", genre);
+        startActivity(myIntent);
     }
 }
