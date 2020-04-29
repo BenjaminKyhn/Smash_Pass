@@ -37,7 +37,6 @@ public class VideoGameActivity extends AppCompatActivity {
 
         Intent startIntent = getIntent();
         currentVideoGame = (VideoGame) startIntent.getSerializableExtra("videoGame");
-        System.out.println(currentVideoGame.getName());
 
         populateViews();
     }
