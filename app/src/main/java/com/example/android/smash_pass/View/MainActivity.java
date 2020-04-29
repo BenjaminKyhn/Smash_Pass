@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
+
     private ViewModel viewModel;
     private HashMap<String, VideoGame> videoGameMap;
 
@@ -60,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
             myButton.setLayoutParams(params);
             myButton.setTextSize(20);
             myButton.setTextColor(Color.WHITE);
-            myButton.setBackgroundColor(Color.parseColor("#6200EE"));
+            myButton.setHighlightColor(Color.BLACK);
+            myButton.setBackgroundColor(Color.parseColor("#A10000"));
             myButton.setText(genre);
 
             // Give the button an on-click method to switch intent
@@ -93,4 +95,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
         GenresActivity.currentGenre = genre;
     }
+
 }

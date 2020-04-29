@@ -62,7 +62,8 @@ public class GenresActivity extends AppCompatActivity {
                 myButton.setLayoutParams(params);
                 myButton.setTextSize(20);
                 myButton.setTextColor(Color.WHITE);
-                myButton.setBackgroundColor(Color.parseColor("#6200EE"));
+                myButton.setHighlightColor(Color.BLACK);
+                myButton.setBackgroundColor(Color.parseColor("#A10000"));
                 String gameTitle = videoGame.getName();
                 myButton.setText(gameTitle);
 
@@ -85,7 +86,8 @@ public class GenresActivity extends AppCompatActivity {
         backButton.setLayoutParams(params);
         backButton.setTextSize(20);
         backButton.setTextColor(Color.WHITE);
-        backButton.setBackgroundColor(Color.parseColor("#6200EE"));
+        backButton.setHighlightColor(Color.BLACK);
+        backButton.setBackgroundColor(Color.parseColor("#A10000"));
         backButton.setText("Back");
 
         // Give the button an on-click method to switch intent
