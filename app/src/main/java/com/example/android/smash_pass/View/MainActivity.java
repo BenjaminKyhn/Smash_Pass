@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openGenre(v, genre);
+                    openGenre(genre);
                 }
             });
 
@@ -89,11 +89,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void openGenre(View view, String genre) {
+    public void openGenre(String genre) {
         Intent myIntent = new Intent(this, GenresActivity.class);
-        myIntent.putExtra("map", videoGameMap);
         startActivity(myIntent);
+        myIntent.putExtra("map", videoGameMap);
         GenresActivity.currentGenre = genre;
     }
-
 }
