@@ -113,7 +113,9 @@ public class FirebaseHandler {
         screens17.add("https://i.imgur.com/7WxilCt.jpg");
         videoGameMap.put("Diablo II", new VideoGame("Diablo II", "Dungeon Crawler", "PC", 2000, 2, true, screens17));
 
-        videoGameMap.put("Mario Kart Wii U", new VideoGame("Mario Kart Wii U", "Racing", "Wii U", 2013, 12, true));
+        ArrayList<String> screens18 = new ArrayList<>();
+        screens18.add("https://i.imgur.com/MExodpS.jpg");
+        videoGameMap.put("Mario Kart 8", new VideoGame("Mario Kart 8", "Racing", "Wii U", 2013, 12, true, screens18));
 
         videoGameReference.setValue(videoGameMap);
     }
