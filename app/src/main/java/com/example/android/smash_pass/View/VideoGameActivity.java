@@ -3,7 +3,6 @@ package com.example.android.smash_pass.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +43,9 @@ public class VideoGameActivity extends AppCompatActivity {
         thumbsDownButton = findViewById(R.id.thumbsDown);
         thumbsUpButton = findViewById(R.id.thumbsUp);
 
+        Intent startIntent = getIntent();
+        currentVideoGame = (VideoGame) startIntent.getSerializableExtra("videoGame");
+
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,9 +75,6 @@ public class VideoGameActivity extends AppCompatActivity {
                 thumbsUpButton.setEnabled(false);
             }
         });
-
-        Intent startIntent = getIntent();
-        currentVideoGame = (VideoGame) startIntent.getSerializableExtra("videoGame");
 
         populateViews();
     }

@@ -13,10 +13,9 @@ import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class GenresActivity extends AppCompatActivity {
-    private Map<String, VideoGame> videoGameMap;
+    private HashMap<String, VideoGame> videoGameMap;
     private String currentGenre;
 
     @Override
