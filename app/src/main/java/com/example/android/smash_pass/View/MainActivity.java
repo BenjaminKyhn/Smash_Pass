@@ -30,6 +30,24 @@ public class MainActivity extends AppCompatActivity {
         setupViewModel();
     }
 
+    private void setupViewModel() {
+        viewModel = ViewModel.getInstance();
+
+        viewModel.observeVideoGame(new MyObserver() {
+            @Override
+            public void update(Object o) {
+                videoGameMap = (HashMap<String, VideoGame>) o; // vi observer på mappet og ikke på det enkelte video game?
+            }
+        });
+    }
+
+    public void openGenre(String genre) {
+        Intent myIntent = new Intent(this, GenresActivity.class);
+        myIntent.putExtra("map", videoGameMap);
+        myIntent.putExtra("genre", genre);
+        startActivity(myIntent);
+    }
+
     public void createButtons(View view) {
         // Remove the start button
         Button start = findViewById(R.id.btnStart);
@@ -76,23 +94,5 @@ public class MainActivity extends AppCompatActivity {
             // Add the button to the activity as a ButtonView
             linearLayout.addView(myButton);
         }
-    }
-
-    private void setupViewModel() {
-        viewModel = ViewModel.getInstance();
-
-        viewModel.observeVideoGame(new MyObserver() {
-            @Override
-            public void update(Object o) {
-                videoGameMap = (HashMap<String, VideoGame>) o;
-            }
-        });
-    }
-
-    public void openGenre(String genre) {
-        Intent myIntent = new Intent(this, GenresActivity.class);
-        myIntent.putExtra("map", videoGameMap);
-        myIntent.putExtra("genre", genre);
-        startActivity(myIntent);
     }
 }
