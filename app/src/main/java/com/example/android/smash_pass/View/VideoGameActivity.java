@@ -21,6 +21,7 @@ public class VideoGameActivity extends AppCompatActivity {
     private TextView yearText;
     private TextView numberOfPlayersText;
     private TextView onlinePlayText;
+    private TextView smashFactorText;
     private ImageView mainImage;
     private Button thumbsDownButton;
     private Button thumbsUpButton;
@@ -38,6 +39,7 @@ public class VideoGameActivity extends AppCompatActivity {
         yearText = findViewById(R.id.yearText);
         numberOfPlayersText = findViewById(R.id.numberOfPlayersText);
         onlinePlayText = findViewById(R.id.onlinePlayText);
+        smashFactorText = findViewById(R.id.smashFactor);
         thumbsDownButton = findViewById(R.id.thumbsDown);
         thumbsUpButton = findViewById(R.id.thumbsUp);
 
@@ -79,6 +81,7 @@ public class VideoGameActivity extends AppCompatActivity {
         yearText.setText(String.valueOf(currentVideoGame.getYear()));
         numberOfPlayersText.setText(String.valueOf(currentVideoGame.getNumberOfPlayers()));
         onlinePlayText.setText(String.valueOf(currentVideoGame.getOnlinePlay()));
+        smashFactorText.setText((int)currentVideoGame.getSmashFactor() + "%");
     }
 
     public void back(View view){
