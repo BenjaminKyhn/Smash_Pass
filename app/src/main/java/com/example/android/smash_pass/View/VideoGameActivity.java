@@ -44,12 +44,18 @@ public class VideoGameActivity extends AppCompatActivity {
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!thumbsUpButton.isEnabled())
+                    thumbsUpButton.setEnabled(true);
+                thumbsDownButton.setEnabled(false);
             }
         });
 
         thumbsUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!thumbsDownButton.isEnabled())
+                    thumbsDownButton.setEnabled(true);
+                thumbsUpButton.setEnabled(false);
             }
         });
 
