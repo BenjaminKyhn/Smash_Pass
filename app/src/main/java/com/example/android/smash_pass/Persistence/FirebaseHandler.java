@@ -47,7 +47,7 @@ public class FirebaseHandler {
     public void saveToDatabase() {
         ArrayList<String> screens01 = new ArrayList<>();
         screens01.add("https://i.imgur.com/9l7kRbw.jpg");
-        videoGameMap.put("Wizard of Legend", new VideoGame("Wizard of Legend", "Dungeon Crawler", "PC", 2018, 2, true, screens01));
+        videoGameMap.put("Wizard of Legend", new VideoGame("Wizard of Legend", "Dungeon Crawler", "PC", 2018, 2, true, screens01, 47));
 
         ArrayList<String> screens02 = new ArrayList<>();
         screens02.add("https://i.imgur.com/Ngn7XiR.jpg");

@@ -38,6 +38,18 @@ public class VideoGame extends MyObservable implements Serializable {
         this.screenshots = screenshots;
     }
 
+    // Constructor with screenshots and smash factor
+    public VideoGame(String name, String genre, String platform, long year, long numberOfPlayers, boolean onlinePlay, ArrayList<String> screenshots, double smashFactor) {
+        this.name = name;
+        this.genre = genre;
+        this.platform = platform;
+        this.year = year;
+        this.numberOfPlayers = numberOfPlayers;
+        this.onlinePlay = onlinePlay;
+        this.screenshots = screenshots;
+        this.smashFactor = smashFactor;
+    }
+
     public String getName() {
         return name;
     }
