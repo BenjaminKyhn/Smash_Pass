@@ -11,6 +11,8 @@ public class VideoGame extends MyObservable implements Serializable {
     private long numberOfPlayers;
     private boolean onlinePlay;
     private double smashFactor;
+    private int numberOfVotes;
+    private int rating; // a user can rate a video game 0 or 1
 
     private ArrayList<String> screenshots;
 
@@ -118,5 +120,21 @@ public class VideoGame extends MyObservable implements Serializable {
 
     public void setScreenshots(ArrayList<String> screenshots) {
         this.screenshots = screenshots;
+    }
+
+    public int getNumberOfVotes() {
+        return numberOfVotes;
+    }
+
+    public void setNumberOfVotes(int numberOfVotes) {
+        this.numberOfVotes = numberOfVotes;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }

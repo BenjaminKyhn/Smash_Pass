@@ -26,6 +26,7 @@ public class VideoGameActivity extends AppCompatActivity {
     private Button thumbsDownButton;
     private Button thumbsUpButton;
     private VideoGame currentVideoGame;
+    private boolean voted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,12 @@ public class VideoGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!thumbsUpButton.isEnabled())
                     thumbsUpButton.setEnabled(true);
+                if (!voted){
+                    currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
+                    voted = true;
+                }
+
+                System.out.println(currentVideoGame.getNumberOfVotes());
                 thumbsDownButton.setEnabled(false);
             }
         });
@@ -57,6 +64,12 @@ public class VideoGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!thumbsDownButton.isEnabled())
                     thumbsDownButton.setEnabled(true);
+                if (!voted){
+                    currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
+                    voted = true;
+                }
+
+                System.out.println(currentVideoGame.getNumberOfVotes());
                 thumbsUpButton.setEnabled(false);
             }
         });
@@ -69,7 +82,7 @@ public class VideoGameActivity extends AppCompatActivity {
 
     private void populateViews() {
         // Populate the ImageView
-        if (currentVideoGame.getScreenshots() != null){
+        if (currentVideoGame.getScreenshots() != null) {
             String pictureUrl = currentVideoGame.getScreenshots().get(0);
             Picasso.get().load(pictureUrl).into(mainImage);
         }
@@ -81,10 +94,10 @@ public class VideoGameActivity extends AppCompatActivity {
         yearText.setText(String.valueOf(currentVideoGame.getYear()));
         numberOfPlayersText.setText(String.valueOf(currentVideoGame.getNumberOfPlayers()));
         onlinePlayText.setText(String.valueOf(currentVideoGame.getOnlinePlay()));
-        smashFactorText.setText((int)currentVideoGame.getSmashFactor() + "%");
+        smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%");
     }
 
-    public void back(View view){
+    public void back(View view) {
         finish();
     }
 }
