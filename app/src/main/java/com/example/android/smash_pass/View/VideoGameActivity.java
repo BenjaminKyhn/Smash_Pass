@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.smash_pass.Model.MyObservable;
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
 import com.squareup.picasso.Picasso;
@@ -28,6 +27,7 @@ public class VideoGameActivity extends AppCompatActivity {
 
     private boolean voted;
 
+    private ViewModel viewModel;
     private VideoGame currentVideoGame;
 
     @Override
@@ -48,6 +48,7 @@ public class VideoGameActivity extends AppCompatActivity {
 
         Intent startIntent = getIntent();
         currentVideoGame = (VideoGame) startIntent.getSerializableExtra("videoGame");
+        viewModel = ViewModel.getInstance();
 
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +57,7 @@ public class VideoGameActivity extends AppCompatActivity {
                     thumbsUpButton.setEnabled(true);
                 if (!voted){
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
+                    viewModel.saveVideoGame(currentVideoGame);
                     voted = true;
                 }
 
@@ -71,6 +73,7 @@ public class VideoGameActivity extends AppCompatActivity {
                     thumbsDownButton.setEnabled(true);
                 if (!voted){
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
+                    viewModel.saveVideoGame(currentVideoGame);
                     voted = true;
                 }
 

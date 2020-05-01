@@ -15,20 +15,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirebaseHandler {
-    private DatabaseReference videoGameReference;
+    private DatabaseReference videoGameMapReference;
     private Map<String, VideoGame> videoGameMap = new HashMap<>();
     private MyObservable myObservable;
 
     public FirebaseHandler(MyObservable myObservable) {
         this.myObservable = myObservable;
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        videoGameReference = firebaseDatabase.getReference("Video Games");
-        saveToDatabase();
+        videoGameMapReference = firebaseDatabase.getReference("Video Games");
+//        saveToDatabase();
         getDatabase();
     }
 
     private void getDatabase() {
-        videoGameReference.addValueEventListener(new ValueEventListener() {
+        videoGameMapReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshotChild : dataSnapshot.getChildren()) {
@@ -42,6 +42,11 @@ public class FirebaseHandler {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
+
+    public void saveVideoGame(VideoGame videoGame){
+        DatabaseReference videoGameReference = videoGameMapReference.child(videoGame.getName());
+        videoGameReference.setValue(videoGame);
     }
 
     public void saveToDatabase() {
@@ -117,7 +122,7 @@ public class FirebaseHandler {
         screens18.add("https://i.imgur.com/MExodpS.jpg");
         videoGameMap.put("Mario Kart 8", new VideoGame("Mario Kart 8", "Racing", "Wii U", 2013, 12, true, screens18));
 
-        videoGameReference.setValue(videoGameMap);
+        videoGameMapReference.setValue(videoGameMap);
     }
 
     public void printStuff(Map<String, VideoGame> retrievedVideoGames) {
