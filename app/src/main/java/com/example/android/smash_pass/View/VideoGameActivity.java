@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.smash_pass.Model.MyObservable;
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
 import com.squareup.picasso.Picasso;
@@ -24,8 +25,10 @@ public class VideoGameActivity extends AppCompatActivity {
     private ImageView mainImage;
     private Button thumbsDownButton;
     private Button thumbsUpButton;
-    private VideoGame currentVideoGame;
+
     private boolean voted;
+
+    private VideoGame currentVideoGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

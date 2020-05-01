@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.observeVideoGame(new MyObserver() {
             @Override
             public void update(Object o) {
-                videoGameMap = (HashMap<String, VideoGame>) o; // vi observer på mappet og ikke på det enkelte video game?
+                videoGameMap = (HashMap<String, VideoGame>) o; // vi observerer på mappet og ikke på det enkelte video game?
             }
         });
     }

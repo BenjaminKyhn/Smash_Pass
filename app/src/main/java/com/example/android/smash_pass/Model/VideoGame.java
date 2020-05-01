@@ -112,6 +112,7 @@ public class VideoGame extends MyObservable implements Serializable {
 
     public void setSmashFactor(double smashFactor) {
         this.smashFactor = smashFactor;
+        notifyObservers(this.smashFactor);
     }
 
     public ArrayList<String> getScreenshots() {
@@ -120,6 +121,7 @@ public class VideoGame extends MyObservable implements Serializable {
 
     public void setScreenshots(ArrayList<String> screenshots) {
         this.screenshots = screenshots;
+        notifyObservers(this.screenshots);
     }
 
     public int getNumberOfVotes() {
@@ -128,6 +130,7 @@ public class VideoGame extends MyObservable implements Serializable {
 
     public void setNumberOfVotes(int numberOfVotes) {
         this.numberOfVotes = numberOfVotes;
+        notifyObservers(this.numberOfVotes);
     }
 
     public int getRating() {
@@ -136,5 +139,6 @@ public class VideoGame extends MyObservable implements Serializable {
 
     public void setRating(int rating) {
         this.rating = rating;
+        notifyObservers(this.rating);
     }
 }
