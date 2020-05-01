@@ -55,9 +55,12 @@ public class VideoGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!thumbsUpButton.isEnabled())
                     thumbsUpButton.setEnabled(true);
-                if (!voted){
+                if (!voted) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
                     viewModel.saveVideoGame(currentVideoGame);
+                    // we're only updating the firebasereference, but not the object within the program
+                    // when we go back to MainActivity, the videoGameMap object is updated
+                    // when go back forward to GenresActivity we're passing the updated videoGameMap through an intent and that's why you can vote again
                     voted = true;
                 }
 
@@ -71,7 +74,7 @@ public class VideoGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!thumbsDownButton.isEnabled())
                     thumbsDownButton.setEnabled(true);
-                if (!voted){
+                if (!voted) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
                     viewModel.saveVideoGame(currentVideoGame);
                     voted = true;
