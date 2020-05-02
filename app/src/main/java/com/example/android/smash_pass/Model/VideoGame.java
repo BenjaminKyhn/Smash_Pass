@@ -10,9 +10,9 @@ public class VideoGame extends MyObservable implements Serializable {
     private long year;
     private long numberOfPlayers;
     private boolean onlinePlay;
-    private double smashFactor;
     private int numberOfVotes;
     private int rating; // a user can rate a video game 0 or 1
+    private double smashFactor;
 
     private ArrayList<String> screenshots;
 
@@ -50,6 +50,13 @@ public class VideoGame extends MyObservable implements Serializable {
         this.onlinePlay = onlinePlay;
         this.screenshots = screenshots;
         this.smashFactor = smashFactor;
+    }
+
+    public void calculateSmashFactor(){
+        if (numberOfVotes != 0)
+            smashFactor = (double) rating / numberOfVotes * 100;
+        else
+            smashFactor = 0;
     }
 
     public String getName() {

@@ -57,7 +57,6 @@ public class VideoGameActivity extends AppCompatActivity {
                     thumbsUpButton.setEnabled(true);
                 if (!voted) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
-                    viewModel.saveVideoGame(currentVideoGame);
                     // we're only updating the firebasereference, but not the object within the program
                     // when we go back to MainActivity, the videoGameMap object is updated
                     // when go back forward to GenresActivity we're passing the updated videoGameMap through an intent and that's why you can vote again
@@ -65,6 +64,10 @@ public class VideoGameActivity extends AppCompatActivity {
                 }
 
                 System.out.println(currentVideoGame.getNumberOfVotes());
+                System.out.println(currentVideoGame.getRating());
+                currentVideoGame.calculateSmashFactor();
+                System.out.printf("\n%.2f%%\n", currentVideoGame.getSmashFactor());
+                viewModel.saveVideoGame(currentVideoGame);
                 thumbsDownButton.setEnabled(false);
             }
         });
@@ -76,11 +79,15 @@ public class VideoGameActivity extends AppCompatActivity {
                     thumbsDownButton.setEnabled(true);
                 if (!voted) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
-                    viewModel.saveVideoGame(currentVideoGame);
+                    currentVideoGame.setRating(currentVideoGame.getRating() + 1);
                     voted = true;
                 }
 
                 System.out.println(currentVideoGame.getNumberOfVotes());
+                System.out.println(currentVideoGame.getRating());
+                currentVideoGame.calculateSmashFactor();
+                System.out.printf("\n%.2f%%\n", currentVideoGame.getSmashFactor());
+                viewModel.saveVideoGame(currentVideoGame);
                 thumbsUpButton.setEnabled(false);
             }
         });
