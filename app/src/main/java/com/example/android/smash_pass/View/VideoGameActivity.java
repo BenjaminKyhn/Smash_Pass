@@ -57,9 +57,12 @@ public class VideoGameActivity extends AppCompatActivity {
                     thumbsUpButton.setEnabled(true);
                 if (!voted) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
-                    // we're only updating the firebasereference, but not the object within the program
-                    // when we go back to MainActivity, the videoGameMap object is updated
-                    // when go back forward to GenresActivity we're passing the updated videoGameMap through an intent and that's why you can vote again
+                    /* We're only updating the firebase reference, but not the object within the program,
+                    but we're using the instantiated VideoGame object to get rating and numberOfVotes.
+                    Therefore, the number returned by currentVideoGame.getNumberOfVotes() is always the same,
+                    so when we try to increment it, it will only increment once. But when we go
+                    back to MainActivity, the updated videoGameMap is passed as an intent and we can
+                    once again increment numberOfPlayers by 1. */
                     voted = true;
                 }
 
@@ -109,7 +112,7 @@ public class VideoGameActivity extends AppCompatActivity {
         yearText.setText(String.valueOf(currentVideoGame.getYear()));
         numberOfPlayersText.setText(String.valueOf(currentVideoGame.getNumberOfPlayers()));
         onlinePlayText.setText(String.valueOf(currentVideoGame.getOnlinePlay()));
-        smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%");
+        smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // The window is not updated visually before accessing MainActivity again
     }
 
     public void back(View view) {
