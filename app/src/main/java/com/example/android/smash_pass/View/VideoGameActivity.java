@@ -66,10 +66,8 @@ public class VideoGameActivity extends AppCompatActivity {
                     voted = true;
                 }
 
-                System.out.println(currentVideoGame.getNumberOfVotes());
-                System.out.println(currentVideoGame.getRating());
                 currentVideoGame.calculateSmashFactor();
-                System.out.printf("\n%.2f%%\n", currentVideoGame.getSmashFactor());
+                smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
                 viewModel.saveVideoGame(currentVideoGame);
                 thumbsDownButton.setEnabled(false);
             }
@@ -86,10 +84,8 @@ public class VideoGameActivity extends AppCompatActivity {
                     voted = true;
                 }
 
-                System.out.println(currentVideoGame.getNumberOfVotes());
-                System.out.println(currentVideoGame.getRating());
                 currentVideoGame.calculateSmashFactor();
-                System.out.printf("\n%.2f%%\n", currentVideoGame.getSmashFactor());
+                smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
                 viewModel.saveVideoGame(currentVideoGame);
                 thumbsUpButton.setEnabled(false);
             }
@@ -112,7 +108,7 @@ public class VideoGameActivity extends AppCompatActivity {
         yearText.setText(String.valueOf(currentVideoGame.getYear()));
         numberOfPlayersText.setText(String.valueOf(currentVideoGame.getNumberOfPlayers()));
         onlinePlayText.setText(String.valueOf(currentVideoGame.getOnlinePlay()));
-        smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // The window is not updated visually before accessing MainActivity again
+        smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%");
     }
 
     public void back(View view) {

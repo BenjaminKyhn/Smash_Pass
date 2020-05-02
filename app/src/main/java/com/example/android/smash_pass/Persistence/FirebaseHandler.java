@@ -23,7 +23,7 @@ public class FirebaseHandler {
         this.myObservable = myObservable;
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         videoGameMapReference = firebaseDatabase.getReference("Video Games");
-        saveToDatabase();
+//        saveToDatabase();
         getDatabase();
     }
 
