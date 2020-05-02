@@ -49,6 +49,10 @@ public class FirebaseHandler {
         videoGameReference.setValue(videoGame);
     }
 
+    public Map<String, VideoGame> getVideoGameMap() {
+        return videoGameMap;
+    }
+
     public void saveToDatabase() {
         ArrayList<String> screens01 = new ArrayList<>();
         screens01.add("https://i.imgur.com/9l7kRbw.jpg");
@@ -123,16 +127,5 @@ public class FirebaseHandler {
         videoGameMap.put("Mario Kart 8", new VideoGame("Mario Kart 8", "Racing", "Wii U", 2013, 12, true, screens18));
 
         videoGameMapReference.setValue(videoGameMap);
-    }
-
-    public void printStuff(Map<String, VideoGame> retrievedVideoGames) {
-        for (String key : retrievedVideoGames.keySet()) {
-            VideoGame videoGame = retrievedVideoGames.get(key);
-            System.out.println("Key: " + key + ", Name: " + videoGame.getName() + ", Genre: " + videoGame.getGenre());
-        }
-    }
-
-    public Map<String, VideoGame> getVideoGameMap() {
-        return videoGameMap;
     }
 }

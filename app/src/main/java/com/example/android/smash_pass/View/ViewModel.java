@@ -30,10 +30,6 @@ public class ViewModel {
         myObservable.addObserver(myObserver);
     }
 
-    public Map<String, VideoGame> getVideoGameMap() {
-        return videoGameMap;
-    }
-
     public void saveVideoGame(VideoGame videoGame){
         firebaseHandler.saveVideoGame(videoGame);
     }
