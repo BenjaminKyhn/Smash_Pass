@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private SignInButton signInButton;
     private Button signOutButton;
     private GoogleSignInClient mGoogleSignInClient;
-    private String TAG = "MainActivity";
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN = 1;
     GoogleSignInAccount account;
@@ -65,16 +63,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 signIn();
-            }
-        });
-
-        signOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mGoogleSignInClient.signOut();
-                Toast.makeText(MainActivity.this,"You are Logged Out",Toast.LENGTH_SHORT).show();
-                signInButton.setVisibility(View.VISIBLE);
-                signOutButton.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -204,5 +192,26 @@ public class MainActivity extends AppCompatActivity {
             // Add the button to the activity as a ButtonView
             linearLayout.addView(myButton);
         }
+
+        // Set the appearance of the button
+        signOutButton.setLayoutParams(params);
+        signOutButton.setTextSize(20);
+        signOutButton.setTextColor(Color.BLACK);
+        signOutButton.setHighlightColor(Color.BLACK);
+        signOutButton.setBackgroundColor(Color.parseColor("#A10000"));
+        signOutButton.setText("Sign Out");
+
+        // Give the button an on-click method to switch intent
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGoogleSignInClient.signOut();
+                Toast.makeText(MainActivity.this,"You are Logged Out",Toast.LENGTH_SHORT).show();
+                signInButton.setVisibility(View.VISIBLE);
+                signOutButton.setVisibility(View.INVISIBLE);
+                finish(); // TODO: find a way to remove the buttons so we don't have to exit the app
+            }
+        });
+
     }
 }
