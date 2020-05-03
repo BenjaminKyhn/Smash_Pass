@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN = 1;
-    GoogleSignInAccount account;
-    ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
+    private GoogleSignInAccount account;
+    private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
 
     private ViewModel viewModel;
     private HashMap<String, VideoGame> videoGameMap;
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, GenresActivity.class);
         myIntent.putExtra("map", videoGameMap);
         myIntent.putExtra("genre", genre);
-        myIntent.putExtra("accountList", accounts); // TODO: Pass only the current GoogleSignInAccount instead of an array with the intent
+        myIntent.putExtra("accounts", accounts); // TODO: Pass only the current GoogleSignInAccount instead of an array with the intent
         startActivity(myIntent);
     }
 

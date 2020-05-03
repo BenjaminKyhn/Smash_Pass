@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class VideoGameActivity extends AppCompatActivity {
     private TextView titleText;
@@ -29,6 +32,7 @@ public class VideoGameActivity extends AppCompatActivity {
 
     private ViewModel viewModel;
     private VideoGame currentVideoGame;
+    private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class VideoGameActivity extends AppCompatActivity {
 
         Intent startIntent = getIntent();
         currentVideoGame = (VideoGame) startIntent.getSerializableExtra("videoGame");
+        accounts = (ArrayList<GoogleSignInAccount>) startIntent.getSerializableExtra("accounts");
+
         viewModel = ViewModel.getInstance();
 
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
