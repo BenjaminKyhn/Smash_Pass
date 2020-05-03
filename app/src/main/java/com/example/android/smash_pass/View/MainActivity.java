@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN = 1;
     GoogleSignInAccount account;
+    ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
 
     private ViewModel viewModel;
     private HashMap<String, VideoGame> videoGameMap;
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser fUser){
         account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if(account !=  null){
+            accounts.add(account);
             String personName = account.getDisplayName();
             String personEmail = account.getEmail();
             signInButton.setVisibility(View.INVISIBLE);
@@ -143,14 +145,11 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, GenresActivity.class);
         myIntent.putExtra("map", videoGameMap);
         myIntent.putExtra("genre", genre);
+        myIntent.putExtra("accountList", accounts); // TODO: Pass only the current GoogleSignInAccount instead of an array with the intent
         startActivity(myIntent);
     }
 
     public void createButtons() {
-        // Remove the start button
-//        Button start = findViewById(R.id.btnStart);
-//        ((ViewGroup) start.getParent()).removeView(start);
-
         // Create a list and add all genres from the map to the list
         ArrayList<String> allGenres = new ArrayList<>();
         for (String key : videoGameMap.keySet()) {
