@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
         signOutButton = findViewById(R.id.sign_out_button);
         mAuth = FirebaseAuth.getInstance();
 
+        setupViewModel();
+
+        startSignInProcess();
+    }
+
+    private void startSignInProcess(){
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -68,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         signOutButton.setVisibility(View.INVISIBLE);
-
-        setupViewModel();
     }
 
     private void signIn(){
