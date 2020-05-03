@@ -28,6 +28,7 @@ public class VideoGameActivity extends AppCompatActivity {
     private ImageView mainImage;
     private Button thumbsDownButton;
     private Button thumbsUpButton;
+    private TextView votedText;
 
     private boolean voted;
 
@@ -62,8 +63,10 @@ public class VideoGameActivity extends AppCompatActivity {
             currentAccount = accounts.get(0);
         }
 
+        // Get the view model
         viewModel = ViewModel.getInstance();
 
+        // Instantiate buttons
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,14 +107,13 @@ public class VideoGameActivity extends AppCompatActivity {
             }
         });
 
+
+        // Disable the buttons if the user already voted
         if (currentVideoGame.getVotedAccounts().contains(currentAccount.getId())){
             thumbsUpButton.setEnabled(false);
             thumbsDownButton.setEnabled(false);
-        }
-
-        // Toast to the user if he or she already voted on this game
-        if (currentVideoGame.getVotedAccounts().contains(currentAccount.getId())){
-            Toast.makeText(VideoGameActivity.this,"You've already voted on this game",Toast.LENGTH_LONG).show();
+            votedText = findViewById(R.id.votedText);
+            votedText.setText("Attention: You've already voted on this game!");
         }
 
         populateViews();
