@@ -179,8 +179,7 @@
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_gravity="left"
-                            android:background="@drawable/openpalm"
-                            android:text="PASS" />
+                            android:background="@drawable/openpalm"/>
 
                     </LinearLayout>
 
@@ -195,8 +194,7 @@
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_gravity="right"
-                            android:background="@drawable/closedfist"
-                            android:text="SMASH" />
+                            android:background="@drawable/thumbs_down_button"/>
 
                     </LinearLayout>
 

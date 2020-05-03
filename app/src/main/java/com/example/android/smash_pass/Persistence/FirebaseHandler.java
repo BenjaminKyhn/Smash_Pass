@@ -53,6 +53,7 @@ public class FirebaseHandler {
         return videoGameMap;
     }
 
+    // DO NOT USE THIS METHOD AFTER VOTING HAS BEGUN BECAUSE IT WILL RESET ALL VOTES
     public void saveToDatabase() {
         ArrayList<String> screens01 = new ArrayList<>();
         screens01.add("https://i.imgur.com/9l7kRbw.jpg");
