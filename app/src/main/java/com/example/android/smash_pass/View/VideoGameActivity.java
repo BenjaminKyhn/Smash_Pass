@@ -76,14 +76,13 @@ public class VideoGameActivity extends AppCompatActivity {
                     so when we try to increment it, it will only increment once. But when we go
                     back to MainActivity, the updated videoGameMap is passed as an intent and we can
                     once again increment numberOfPlayers by 1. */
+                    currentVideoGame.calculateSmashFactor();
+                    smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
+                    viewModel.saveVideoGame(currentVideoGame);
+                    thumbsUpButton.setEnabled(false);
+                    thumbsDownButton.setEnabled(false);
                     Toast.makeText(VideoGameActivity.this,"Thanks for voting PASS",Toast.LENGTH_SHORT).show();
                 }
-
-                currentVideoGame.calculateSmashFactor();
-                smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
-                viewModel.saveVideoGame(currentVideoGame);
-                thumbsUpButton.setEnabled(false);
-                thumbsDownButton.setEnabled(false);
             }
         });
 
@@ -94,16 +93,26 @@ public class VideoGameActivity extends AppCompatActivity {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
                     currentVideoGame.setRating(currentVideoGame.getRating() + 1);
                     currentVideoGame.addVotedAccount(currentAccount.getId());
+                    currentVideoGame.calculateSmashFactor();
+                    smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
+                    viewModel.saveVideoGame(currentVideoGame);
+                    thumbsUpButton.setEnabled(false);
+                    thumbsDownButton.setEnabled(false);
                     Toast.makeText(VideoGameActivity.this,"Thanks for voting SMASH",Toast.LENGTH_SHORT).show();
                 }
 
-                currentVideoGame.calculateSmashFactor();
-                smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
-                viewModel.saveVideoGame(currentVideoGame);
-                thumbsUpButton.setEnabled(false);
-                thumbsDownButton.setEnabled(false);
             }
         });
+
+        if (currentVideoGame.getVotedAccounts().contains(currentAccount.getId())){
+            thumbsUpButton.setEnabled(false);
+            thumbsDownButton.setEnabled(false);
+        }
+
+        // Toast to the user if he or she already voted on this game
+        if (currentVideoGame.getVotedAccounts().contains(currentAccount.getId())){
+            Toast.makeText(VideoGameActivity.this,"You've already voted on this game",Toast.LENGTH_LONG).show();
+        }
 
         populateViews();
     }
