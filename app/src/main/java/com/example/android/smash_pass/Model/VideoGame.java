@@ -15,10 +15,8 @@ public class VideoGame extends MyObservable implements Serializable {
     private int numberOfVotes;
     private int rating; // a user can rate a video game 0 or 1
     private double smashFactor; // calculated by dividing rating by number of votes
-
-    private ArrayList<GoogleSignInAccount> votedAccounts = new ArrayList<>();
-
     private ArrayList<String> screenshots;
+    private ArrayList<String> votedAccounts = new ArrayList<>();
 
     public VideoGame() {
     }
@@ -131,12 +129,12 @@ public class VideoGame extends MyObservable implements Serializable {
         notifyObservers(this.rating);
     }
 
-    public ArrayList<GoogleSignInAccount> getVotedAccounts() {
+    public ArrayList<String> getVotedAccounts() {
         return votedAccounts;
     }
 
-    public void addVotedAccount(GoogleSignInAccount votedAccount) {
-        this.votedAccounts.add(votedAccount);
+    public void addVotedAccount(String Id) {
+        this.votedAccounts.add(Id);
         notifyObservers(this.votedAccounts);
     }
 }

@@ -33,6 +33,7 @@ public class VideoGameActivity extends AppCompatActivity {
     private ViewModel viewModel;
     private VideoGame currentVideoGame;
     private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
+    private GoogleSignInAccount currentAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +51,15 @@ public class VideoGameActivity extends AppCompatActivity {
         thumbsDownButton = findViewById(R.id.thumbsDown);
         thumbsUpButton = findViewById(R.id.thumbsUp);
 
+        // Get video game and accounts from the intent that was passed
         Intent startIntent = getIntent();
         currentVideoGame = (VideoGame) startIntent.getSerializableExtra("videoGame");
         accounts = (ArrayList<GoogleSignInAccount>) startIntent.getSerializableExtra("accounts");
+
+        // Instantiate current account if the list of accounts is not empty
+        if (accounts != null){
+            currentAccount = accounts.get(0);
+        }
 
         viewModel = ViewModel.getInstance();
 
@@ -61,15 +68,15 @@ public class VideoGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!thumbsUpButton.isEnabled())
                     thumbsUpButton.setEnabled(true);
-                if (!voted) {
+                if (!currentVideoGame.getVotedAccounts().contains(currentAccount.getId())) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
+                    currentVideoGame.addVotedAccount(currentAccount.getId());
                     /* We're only updating the firebase reference, but not the object within the program,
                     but we're using the instantiated VideoGame object to get rating and numberOfVotes.
                     Therefore, the number returned by currentVideoGame.getNumberOfVotes() is always the same,
                     so when we try to increment it, it will only increment once. But when we go
                     back to MainActivity, the updated videoGameMap is passed as an intent and we can
                     once again increment numberOfPlayers by 1. */
-                    voted = true;
                 }
 
                 currentVideoGame.calculateSmashFactor();
@@ -84,10 +91,10 @@ public class VideoGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!thumbsDownButton.isEnabled())
                     thumbsDownButton.setEnabled(true);
-                if (!voted) {
+                if (!currentVideoGame.getVotedAccounts().contains(currentAccount.getId())) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
                     currentVideoGame.setRating(currentVideoGame.getRating() + 1);
-                    voted = true;
+                    currentVideoGame.addVotedAccount(currentAccount.getId());
                 }
 
                 currentVideoGame.calculateSmashFactor();
