@@ -30,8 +30,6 @@ public class VideoGameActivity extends AppCompatActivity {
     private Button thumbsUpButton;
     private TextView votedText;
 
-    private boolean voted;
-
     private ViewModel viewModel;
     private VideoGame currentVideoGame;
     private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
@@ -42,6 +40,7 @@ public class VideoGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_game);
 
+        // Identify the different views from the layout file
         titleText = findViewById(R.id.titleText);
         mainImage = findViewById(R.id.mainImage);
         genreText = findViewById(R.id.genreText);
@@ -66,7 +65,7 @@ public class VideoGameActivity extends AppCompatActivity {
         // Get the view model
         viewModel = ViewModel.getInstance();
 
-        // Instantiate buttons
+        // Instantiate thumbs down button
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +88,7 @@ public class VideoGameActivity extends AppCompatActivity {
             }
         });
 
+        // Instantiate thumbs up button
         thumbsUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +106,6 @@ public class VideoGameActivity extends AppCompatActivity {
 
             }
         });
-
 
         // Disable the buttons if the user already voted
         if (currentVideoGame.getVotedAccounts().contains(currentAccount.getId())){

@@ -21,7 +21,6 @@ public class GenresActivity extends AppCompatActivity {
     private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
     private String currentGenre;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
