@@ -8,43 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:947230738296:android:43aeb9beae13b924216a8d",
-        "android_client_info": {
-          "package_name": "com.example.android.nigpass"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "947230738296-reo78f3dui7kf4719qdn0khcrp096bfi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.android.nigpass",
-            "certificate_hash": "cb8b6f4ba7afdd77160b5044a0429e2cfbcabdc3"
-          }
-        },
-        {
-          "client_id": "947230738296-jt518d40e6rb3nj27ufv2g47sndpddlq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAYrGIt9sLW4NeFaApTHuH6G5n5qn3r-dQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "947230738296-jt518d40e6rb3nj27ufv2g47sndpddlq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:947230738296:android:4015e676e14f491f216a8d",
         "android_client_info": {
           "package_name": "com.example.android.smash_pass"
@@ -56,80 +19,6 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.android.smash_pass",
-            "certificate_hash": "cb8b6f4ba7afdd77160b5044a0429e2cfbcabdc3"
-          }
-        },
-        {
-          "client_id": "947230738296-jt518d40e6rb3nj27ufv2g47sndpddlq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAYrGIt9sLW4NeFaApTHuH6G5n5qn3r-dQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "947230738296-jt518d40e6rb3nj27ufv2g47sndpddlq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:947230738296:android:6095ebf2eea65e8b216a8d",
-        "android_client_info": {
-          "package_name": "com.example.android.smashpass"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "947230738296-u3dk6q405p0cdipdd5funi0m8mk23tj7.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.android.smashpass",
-            "certificate_hash": "cb8b6f4ba7afdd77160b5044a0429e2cfbcabdc3"
-          }
-        },
-        {
-          "client_id": "947230738296-jt518d40e6rb3nj27ufv2g47sndpddlq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAYrGIt9sLW4NeFaApTHuH6G5n5qn3r-dQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "947230738296-jt518d40e6rb3nj27ufv2g47sndpddlq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:947230738296:android:ba9bcf1ac9cec76f216a8d",
-        "android_client_info": {
-          "package_name": "com.example.android.smushpass"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "947230738296-23cihe657efp1i1fludvh3jt4osrojdl.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.android.smushpass",
             "certificate_hash": "cb8b6f4ba7afdd77160b5044a0429e2cfbcabdc3"
           }
         },
