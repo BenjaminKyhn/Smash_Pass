@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         startSignInProcess();
     }
 
-    private void startSignInProcess(){
+    private void startSignInProcess() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         signOutButton.setVisibility(View.INVISIBLE);
     }
 
-    private void signIn(){
+    private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -84,25 +85,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RC_SIGN_IN){
+        if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
     }
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
-        try{
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
-            Toast.makeText(MainActivity.this,"Signed In Successfully",Toast.LENGTH_SHORT).show();
-            FirebaseGoogleAuth(acc);
-        }
-        catch (ApiException e){
-            Toast.makeText(MainActivity.this,"Sign In Failed",Toast.LENGTH_SHORT).show();
-            FirebaseGoogleAuth(null);
+            Toast.makeText(MainActivity.this, "Signed In Successfully", Toast.LENGTH_SHORT).show();
+            firebaseGoogleAuth(acc);
+        } catch (ApiException e) {
+            Log.d("KelvinTAG", e.getMessage());
+            Toast.makeText(MainActivity.this, "Sign In Failed", Toast.LENGTH_SHORT).show();
+            firebaseGoogleAuth(null);
         }
     }
 
-    private void FirebaseGoogleAuth(GoogleSignInAccount acc) {
+    private void firebaseGoogleAuth(GoogleSignInAccount acc) {
         //check if the account is null
         if (acc != null) {
             AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
@@ -120,15 +121,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void updateUI(FirebaseUser fUser){
+    private void updateUI(FirebaseUser fUser) {
         account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if(account !=  null){
+        if (account != null) {
             accounts.add(account);
             String personName = account.getDisplayName();
             String personEmail = account.getEmail();
             signInButton.setVisibility(View.INVISIBLE);
             signOutButton.setVisibility(View.VISIBLE);
-            Toast.makeText(MainActivity.this,personName + " " + personEmail ,Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, personName + " " + personEmail, Toast.LENGTH_SHORT).show();
             createButtons();
         }
     }
@@ -171,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         params.setMargins(0, 40, 0, 0);
 
         // Iterate through the list of genres
-        for (final String genre : allGenres){
+        for (final String genre : allGenres) {
             // Create a button
             Button myButton = new Button(this);
 
@@ -208,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mGoogleSignInClient.signOut();
-                Toast.makeText(MainActivity.this,"You are Logged Out",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "You are Logged Out", Toast.LENGTH_SHORT).show();
                 signInButton.setVisibility(View.VISIBLE);
                 signOutButton.setVisibility(View.INVISIBLE);
                 finish(); // TODO: find a way to remove the buttons so we don't have to exit the app
