@@ -1,23 +1,45 @@
 package com.example.android.smash_pass.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.android.smash_pass.Model.MyObserver;
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
+    private SignInButton signInButton;
+    private Button signOutButton;
+    private GoogleSignInClient mGoogleSignInClient;
+    private FirebaseAuth mAuth;
+    private int RC_SIGN_IN = 1;
+    private GoogleSignInAccount account;
+    private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
 
     private ViewModel viewModel;
     private HashMap<String, VideoGame> videoGameMap;
@@ -27,7 +49,89 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        signInButton = findViewById(R.id.sign_in_button);
+        signOutButton = findViewById(R.id.sign_out_button);
+        mAuth = FirebaseAuth.getInstance();
+
         setupViewModel();
+
+        startSignInProcess();
+    }
+
+    private void startSignInProcess(){
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+            }
+        });
+
+        signOutButton.setVisibility(View.INVISIBLE);
+    }
+
+    private void signIn(){
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RC_SIGN_IN){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
+        try{
+
+            GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
+            Toast.makeText(MainActivity.this,"Signed In Successfully",Toast.LENGTH_SHORT).show();
+            FirebaseGoogleAuth(acc);
+        }
+        catch (ApiException e){
+            Toast.makeText(MainActivity.this,"Sign In Failed",Toast.LENGTH_SHORT).show();
+            FirebaseGoogleAuth(null);
+        }
+    }
+
+    private void FirebaseGoogleAuth(GoogleSignInAccount acc) {
+        //check if the account is null
+        if (acc != null) {
+            AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
+            mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
+                    } else {
+                        updateUI(null);
+                    }
+                }
+            });
+        }
+    }
+
+    private void updateUI(FirebaseUser fUser){
+        account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        if(account !=  null){
+            accounts.add(account);
+            String personName = account.getDisplayName();
+            String personEmail = account.getEmail();
+            signInButton.setVisibility(View.INVISIBLE);
+            signOutButton.setVisibility(View.VISIBLE);
+            Toast.makeText(MainActivity.this,personName + " " + personEmail ,Toast.LENGTH_SHORT).show();
+            createButtons();
+        }
     }
 
     private void setupViewModel() {
@@ -45,14 +149,11 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, GenresActivity.class);
         myIntent.putExtra("map", videoGameMap);
         myIntent.putExtra("genre", genre);
+        myIntent.putExtra("accounts", accounts); // TODO: Pass only the current GoogleSignInAccount instead of an array with the intent
         startActivity(myIntent);
     }
 
-    public void createButtons(View view) {
-        // Remove the start button
-        Button start = findViewById(R.id.btnStart);
-        ((ViewGroup) start.getParent()).removeView(start);
-
+    public void createButtons() {
         // Create a list and add all genres from the map to the list
         ArrayList<String> allGenres = new ArrayList<>();
         for (String key : videoGameMap.keySet()) {
@@ -94,5 +195,26 @@ public class MainActivity extends AppCompatActivity {
             // Add the button to the activity as a ButtonView
             linearLayout.addView(myButton);
         }
+
+        // Set the appearance of the button
+        signOutButton.setLayoutParams(params);
+        signOutButton.setTextSize(20);
+        signOutButton.setTextColor(Color.BLACK);
+        signOutButton.setHighlightColor(Color.BLACK);
+        signOutButton.setBackgroundColor(Color.parseColor("#A10000"));
+        signOutButton.setText("Sign Out");
+
+        // Give the button an on-click method to switch intent
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGoogleSignInClient.signOut();
+                Toast.makeText(MainActivity.this,"You are Logged Out",Toast.LENGTH_SHORT).show();
+                signInButton.setVisibility(View.VISIBLE);
+                signOutButton.setVisibility(View.INVISIBLE);
+                finish(); // TODO: find a way to remove the buttons so we don't have to exit the app
+            }
+        });
+
     }
 }

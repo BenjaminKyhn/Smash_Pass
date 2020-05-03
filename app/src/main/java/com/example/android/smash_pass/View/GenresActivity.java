@@ -11,12 +11,16 @@ import android.widget.LinearLayout;
 
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GenresActivity extends AppCompatActivity {
     private HashMap<String, VideoGame> videoGameMap;
+    private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
     private String currentGenre;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class GenresActivity extends AppCompatActivity {
         // Get the intent that was passed to this Activity
         Intent startIntent = getIntent();
         videoGameMap = (HashMap<String, VideoGame>) startIntent.getSerializableExtra("map");
+        accounts = (ArrayList<GoogleSignInAccount>) startIntent.getSerializableExtra("accounts");
         currentGenre = startIntent.getStringExtra("genre");
 
         // Create a list of buttons and add them to the activity
@@ -39,6 +44,7 @@ public class GenresActivity extends AppCompatActivity {
     public void openVideoGame(VideoGame videoGame) {
         Intent myIntent = new Intent(this, VideoGameActivity.class);
         myIntent.putExtra("videoGame", videoGame);
+        myIntent.putExtra("accounts", accounts);
         startActivity(myIntent);
     }
 
