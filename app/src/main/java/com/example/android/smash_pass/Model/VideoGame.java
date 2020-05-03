@@ -1,5 +1,7 @@
 package com.example.android.smash_pass.Model;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -12,7 +14,9 @@ public class VideoGame extends MyObservable implements Serializable {
     private boolean onlinePlay;
     private int numberOfVotes;
     private int rating; // a user can rate a video game 0 or 1
-    private double smashFactor;
+    private double smashFactor; // calculated by dividing rating by number of votes
+
+    private ArrayList<GoogleSignInAccount> votedAccounts = new ArrayList<>();
 
     private ArrayList<String> screenshots;
 
@@ -125,5 +129,14 @@ public class VideoGame extends MyObservable implements Serializable {
     public void setRating(int rating) {
         this.rating = rating;
         notifyObservers(this.rating);
+    }
+
+    public ArrayList<GoogleSignInAccount> getVotedAccounts() {
+        return votedAccounts;
+    }
+
+    public void addVotedAccount(GoogleSignInAccount votedAccount) {
+        this.votedAccounts.add(votedAccount);
+        notifyObservers(this.votedAccounts);
     }
 }
