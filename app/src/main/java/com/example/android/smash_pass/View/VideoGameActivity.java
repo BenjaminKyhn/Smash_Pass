@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.smash_pass.Model.VideoGame;
 import com.example.android.smash_pass.R;
@@ -66,8 +67,6 @@ public class VideoGameActivity extends AppCompatActivity {
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!thumbsUpButton.isEnabled())
-                    thumbsUpButton.setEnabled(true);
                 if (!currentVideoGame.getVotedAccounts().contains(currentAccount.getId())) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
                     currentVideoGame.addVotedAccount(currentAccount.getId());
@@ -77,11 +76,13 @@ public class VideoGameActivity extends AppCompatActivity {
                     so when we try to increment it, it will only increment once. But when we go
                     back to MainActivity, the updated videoGameMap is passed as an intent and we can
                     once again increment numberOfPlayers by 1. */
+                    Toast.makeText(VideoGameActivity.this,"Thanks for voting PASS",Toast.LENGTH_SHORT).show();
                 }
 
                 currentVideoGame.calculateSmashFactor();
                 smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
                 viewModel.saveVideoGame(currentVideoGame);
+                thumbsUpButton.setEnabled(false);
                 thumbsDownButton.setEnabled(false);
             }
         });
@@ -89,18 +90,18 @@ public class VideoGameActivity extends AppCompatActivity {
         thumbsUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!thumbsDownButton.isEnabled())
-                    thumbsDownButton.setEnabled(true);
                 if (!currentVideoGame.getVotedAccounts().contains(currentAccount.getId())) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
                     currentVideoGame.setRating(currentVideoGame.getRating() + 1);
                     currentVideoGame.addVotedAccount(currentAccount.getId());
+                    Toast.makeText(VideoGameActivity.this,"Thanks for voting SMASH",Toast.LENGTH_SHORT).show();
                 }
 
                 currentVideoGame.calculateSmashFactor();
                 smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
                 viewModel.saveVideoGame(currentVideoGame);
                 thumbsUpButton.setEnabled(false);
+                thumbsDownButton.setEnabled(false);
             }
         });
 
