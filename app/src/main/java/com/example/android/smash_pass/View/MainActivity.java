@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
         try{
-
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             Toast.makeText(MainActivity.this,"Signed In Successfully",Toast.LENGTH_SHORT).show();
             FirebaseGoogleAuth(acc);
@@ -140,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.observeVideoGame(new MyObserver() {
             @Override
             public void update(Object o) {
-                videoGameMap = (HashMap<String, VideoGame>) o; // vi observerer på mappet og ikke på det enkelte video game?
+                videoGameMap = (HashMap<String, VideoGame>) o;
             }
         });
     }
@@ -215,6 +214,5 @@ public class MainActivity extends AppCompatActivity {
                 finish(); // TODO: find a way to remove the buttons so we don't have to exit the app
             }
         });
-
     }
 }
