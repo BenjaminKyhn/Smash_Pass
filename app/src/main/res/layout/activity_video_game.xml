@@ -175,7 +175,7 @@
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/thumbsDown"
+                            android:id="@+id/passButton"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_gravity="left"
@@ -190,7 +190,7 @@
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/thumbsUp"
+                            android:id="@+id/smashButton"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_gravity="right"

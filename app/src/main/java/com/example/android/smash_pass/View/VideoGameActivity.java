@@ -26,8 +26,8 @@ public class VideoGameActivity extends AppCompatActivity {
     private TextView onlinePlayText;
     private TextView smashFactorText;
     private ImageView mainImage;
-    private Button thumbsDownButton;
-    private Button thumbsUpButton;
+    private Button passButton;
+    private Button smashButton;
     private TextView votedText;
 
     private boolean voted;
@@ -50,8 +50,8 @@ public class VideoGameActivity extends AppCompatActivity {
         numberOfPlayersText = findViewById(R.id.numberOfPlayersText);
         onlinePlayText = findViewById(R.id.onlinePlayText);
         smashFactorText = findViewById(R.id.smashFactor);
-        thumbsDownButton = findViewById(R.id.thumbsDown);
-        thumbsUpButton = findViewById(R.id.thumbsUp);
+        passButton = findViewById(R.id.passButton);
+        smashButton = findViewById(R.id.smashButton);
 
         // Get video game and accounts from the intent that was passed
         Intent startIntent = getIntent();
@@ -67,7 +67,7 @@ public class VideoGameActivity extends AppCompatActivity {
         viewModel = ViewModel.getInstance();
 
         // Instantiate buttons
-        thumbsDownButton.setOnClickListener(new View.OnClickListener() {
+        passButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!currentVideoGame.getVotedAccounts().contains(currentAccount.getId())) {
@@ -82,14 +82,14 @@ public class VideoGameActivity extends AppCompatActivity {
                     currentVideoGame.calculateSmashFactor();
                     smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
                     viewModel.saveVideoGame(currentVideoGame);
-                    thumbsUpButton.setEnabled(false);
-                    thumbsDownButton.setEnabled(false);
+                    smashButton.setEnabled(false);
+                    passButton.setEnabled(false);
                     Toast.makeText(VideoGameActivity.this,"Thanks for voting PASS",Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        thumbsUpButton.setOnClickListener(new View.OnClickListener() {
+        smashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!currentVideoGame.getVotedAccounts().contains(currentAccount.getId())) {
@@ -99,8 +99,8 @@ public class VideoGameActivity extends AppCompatActivity {
                     currentVideoGame.calculateSmashFactor();
                     smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
                     viewModel.saveVideoGame(currentVideoGame);
-                    thumbsUpButton.setEnabled(false);
-                    thumbsDownButton.setEnabled(false);
+                    smashButton.setEnabled(false);
+                    passButton.setEnabled(false);
                     Toast.makeText(VideoGameActivity.this,"Thanks for voting SMASH",Toast.LENGTH_SHORT).show();
                 }
 
@@ -110,8 +110,8 @@ public class VideoGameActivity extends AppCompatActivity {
 
         // Disable the buttons if the user already voted
         if (currentVideoGame.getVotedAccounts().contains(currentAccount.getId())){
-            thumbsUpButton.setEnabled(false);
-            thumbsDownButton.setEnabled(false);
+            smashButton.setEnabled(false);
+            passButton.setEnabled(false);
             votedText = findViewById(R.id.votedText);
             votedText.setText("Attention: You've already voted on this game!");
         }
