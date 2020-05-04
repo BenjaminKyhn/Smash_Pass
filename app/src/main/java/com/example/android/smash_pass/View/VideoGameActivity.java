@@ -126,8 +126,11 @@ public class VideoGameActivity extends AppCompatActivity {
         platformText.setText(currentVideoGame.getPlatform());
         yearText.setText(String.valueOf(currentVideoGame.getYear()));
         numberOfPlayersText.setText(String.valueOf(currentVideoGame.getNumberOfPlayers()));
-        onlinePlayText.setText(String.valueOf(currentVideoGame.getOnlinePlay()));
         smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%");
+        if (currentVideoGame.getOnlinePlay())
+            onlinePlayText.setText("Yes");
+        else
+            onlinePlayText.setText("No");
     }
 
     public void back(View view) {
