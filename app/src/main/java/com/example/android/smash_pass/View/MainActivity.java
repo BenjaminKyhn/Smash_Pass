@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, GenresActivity.class);
         myIntent.putExtra("map", videoGameMap);
         myIntent.putExtra("genre", genre);
-        myIntent.putExtra("userID", userID); // TODO: Pass only the current GoogleSignInAccount instead of an array with the intent
+        myIntent.putExtra("userID", userID);
         startActivity(myIntent);
     }
 
