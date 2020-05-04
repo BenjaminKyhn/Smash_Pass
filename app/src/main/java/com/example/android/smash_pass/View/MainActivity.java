@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN = 1;
-    private GoogleSignInAccount account;
     private String userID;
 
     private ViewModel viewModel;
@@ -97,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Signed In Successfully", Toast.LENGTH_SHORT).show();
             firebaseGoogleAuth(acc);
         } catch (ApiException e) {
-            Log.d("KelvinTAG", e.getMessage());
+            Log.d("LoginFail", e.getMessage());
             Toast.makeText(MainActivity.this, "Sign In Failed", Toast.LENGTH_SHORT).show();
             firebaseGoogleAuth(null);
         }
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser fUser) {
-        account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (account != null) {
             userID = account.getId();
             String personName = account.getDisplayName();
