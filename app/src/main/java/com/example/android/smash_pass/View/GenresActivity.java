@@ -18,7 +18,7 @@ import java.util.HashMap;
 
 public class GenresActivity extends AppCompatActivity {
     private HashMap<String, VideoGame> videoGameMap;
-    private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
+    private String userID;
     private String currentGenre;
 
     @Override
@@ -29,7 +29,7 @@ public class GenresActivity extends AppCompatActivity {
         // Get the intent that was passed to this Activity
         Intent startIntent = getIntent();
         videoGameMap = (HashMap<String, VideoGame>) startIntent.getSerializableExtra("map");
-        accounts = (ArrayList<GoogleSignInAccount>) startIntent.getSerializableExtra("accounts");
+        userID = startIntent.getStringExtra("userID");
         currentGenre = startIntent.getStringExtra("genre");
 
         // Create a list of buttons and add them to the activity
@@ -43,7 +43,7 @@ public class GenresActivity extends AppCompatActivity {
     public void openVideoGame(VideoGame videoGame) {
         Intent myIntent = new Intent(this, VideoGameActivity.class);
         myIntent.putExtra("videoGame", videoGame);
-        myIntent.putExtra("accounts", accounts);
+        myIntent.putExtra("userID", userID);
         startActivity(myIntent);
     }
 

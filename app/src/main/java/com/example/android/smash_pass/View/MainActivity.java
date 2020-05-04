@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN = 1;
     private GoogleSignInAccount account;
-    private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
+    private String userID;
 
     private ViewModel viewModel;
     private HashMap<String, VideoGame> videoGameMap;
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser fUser) {
         account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (account != null) {
-            accounts.add(account);
+            userID = account.getId();
             String personName = account.getDisplayName();
             String personEmail = account.getEmail();
             signInButton.setVisibility(View.INVISIBLE);
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, GenresActivity.class);
         myIntent.putExtra("map", videoGameMap);
         myIntent.putExtra("genre", genre);
-        myIntent.putExtra("accounts", accounts); // TODO: Pass only the current GoogleSignInAccount instead of an array with the intent
+        myIntent.putExtra("userID", userID); // TODO: Pass only the current GoogleSignInAccount instead of an array with the intent
         startActivity(myIntent);
     }
 

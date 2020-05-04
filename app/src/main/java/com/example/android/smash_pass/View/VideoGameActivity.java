@@ -32,8 +32,7 @@ public class VideoGameActivity extends AppCompatActivity {
 
     private ViewModel viewModel;
     private VideoGame currentVideoGame;
-    private ArrayList<GoogleSignInAccount> accounts = new ArrayList<>();
-    private GoogleSignInAccount currentAccount;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +54,7 @@ public class VideoGameActivity extends AppCompatActivity {
         // Get video game and accounts from the intent that was passed
         Intent startIntent = getIntent();
         currentVideoGame = (VideoGame) startIntent.getSerializableExtra("videoGame");
-        accounts = (ArrayList<GoogleSignInAccount>) startIntent.getSerializableExtra("accounts");
-
-        // Instantiate current account if the list of accounts is not empty
-        if (accounts != null){
-            currentAccount = accounts.get(0);
-        }
+        userID = startIntent.getStringExtra("userID");
 
         // Get the view model
         viewModel = ViewModel.getInstance();
@@ -70,9 +64,9 @@ public class VideoGameActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (!currentVideoGame.getVotedAccounts().contains(currentAccount.getId())) {
+                if (!currentVideoGame.getVotedAccounts().contains(userID)) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
-                    currentVideoGame.addVotedAccount(currentAccount.getId());
+                    currentVideoGame.addVotedAccount(userID);
                     /* We're only updating the firebase reference, but not the object within the program,
                     but we're using the instantiated VideoGame object to get rating and numberOfVotes.
                     Therefore, the number returned by currentVideoGame.getNumberOfVotes() is always the same,
@@ -93,10 +87,10 @@ public class VideoGameActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (!currentVideoGame.getVotedAccounts().contains(currentAccount.getId())) {
+                if (!currentVideoGame.getVotedAccounts().contains(userID)) {
                     currentVideoGame.setNumberOfVotes(currentVideoGame.getNumberOfVotes() + 1);
                     currentVideoGame.setRating(currentVideoGame.getRating() + 1);
-                    currentVideoGame.addVotedAccount(currentAccount.getId());
+                    currentVideoGame.addVotedAccount(userID);
                     currentVideoGame.calculateSmashFactor();
                     smashFactorText.setText((int) currentVideoGame.getSmashFactor() + "%"); // Update the view
                     viewModel.saveVideoGame(currentVideoGame);
@@ -109,7 +103,7 @@ public class VideoGameActivity extends AppCompatActivity {
         });
 
         // Disable the buttons if the user already voted
-        if (currentVideoGame.getVotedAccounts().contains(currentAccount.getId())){
+        if (currentVideoGame.getVotedAccounts().contains(userID)){
             smashButton.setEnabled(false);
             passButton.setEnabled(false);
             votedText = findViewById(R.id.votedText);
