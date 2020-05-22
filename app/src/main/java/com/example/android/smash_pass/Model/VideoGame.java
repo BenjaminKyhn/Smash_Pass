@@ -1,7 +1,5 @@
 package com.example.android.smash_pass.Model;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
